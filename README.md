@@ -155,15 +155,18 @@ Default HTTP header observed: 200 OK. Additional status data in Status and Messa
 ## Examples for unavailable domain
 
 JSON:
-`% curl --header Accept:application/json \
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk`
+```
+% curl --header Accept:application/json \
+https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+```
 
 `{"domain":"dk-hostmaster.dk","status":"ok","domain_status":"unavailable"}`
 
 XML:
-
-`% curl --header Accept:application/xml \ 
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk`
+```
+% curl --header Accept:application/xml \ 
+https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+```
 
 ```
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
@@ -174,9 +177,10 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hos
 ```
 
 Text:
-
-`% curl --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk`
+```
+% curl --header Accept:text/plain \
+http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+```
 
 ```
 domain:dk-hostmaster.dk
@@ -187,16 +191,18 @@ domain_status:unavailable
 ## Examples for available domain
 
 JSON:
-
-`% curl --header Accept:application/json \
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk`
+```
+% curl --header Accept:application/json \
+https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
+```
 
 `{"domain":"adsf.dk","status":"ok","domain_status":"available"}``
 
 XML:
-
-`% curl --header Accept:application/xml \ 
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk`
+```
+% curl --header Accept:application/xml \ 
+https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+```
 
 ```
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
@@ -208,9 +214,10 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.d
 ```
 
 Text:
-
-`% curl --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk`
+```
+% curl --header Accept:text/plain \
+http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+```
 
 ```
 domain:adsf.dk
@@ -223,9 +230,10 @@ domain_status:available
 Please note the -v flag to curl and that the response has been stripped down.
 
 Text:
-
-`% curl -v --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf`
+```
+% curl -v --header Accept:text/plain \
+http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+```
 
 ```
 < HTTP/1.1 415 Unsupported Media Type
@@ -236,7 +244,7 @@ http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf`
 < Content-Length: 24
 < Server: Mojolicious (Perl)
 < 
-"Unsupported media type"`
+"Unsupported media type"
 ```
 
 ## Example with bad credentials
@@ -244,9 +252,10 @@ http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf`
 Please note the -v flag to `curl` and that the response has been stripped down.
 
 Text:
-
-`% curl -v --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf`
+```
+% curl -v --header Accept:text/plain \
+http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+```
 
 ```
 < HTTP/1.1 401 Unauthorized
