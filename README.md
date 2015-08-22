@@ -129,7 +129,7 @@ Please note the sandbox environment is not under rate limiting at this time, due
 The service uses a basic session handling based on cookies. 
 
 | Parameter | Value | Description |
-| cookie name | dkhm-das-session | This is the name of the cookie
+| cookie name | dkhm-das-session | This is the name of the cookie |
 | cookie domain | .dk-hostmaster.dk |  
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
