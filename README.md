@@ -266,18 +266,18 @@ The sandbox uses a predefined set of test data.
 
 ## Domains
 
-| Domain name      | Status      | Notes |
+| Domain name | Status | Notes |
 | dk-hostmaster.dk | Unavailable | The domain is active |
-| asdf.dk          | Available   | Not in the registry at this time |
-| blocked.dk       | Available   | The domain status is blocked |
-| æøåöäüé.dk       | Unavailable | This domain is active |
+| asdf.dk | Available | Not in the registry at this time |
+| blocked.dk | Available | The domain status is blocked |
+| æøåöäüé.dk | Unavailable | This domain is active |
 
 ## Accounts / Credentials
 
 | Username   | Password | Status | Notes |
-| REG-999999 | secret   | Active | The domain status us active
-| TEST1-DK   | secret   | Active | Not authorized, the user does not have registrator status |
-| REG-123456 | secret   | Active | The users password is temporary and cannot be used to access service. |
+| REG-999999 | secret | Active | The domain status us active |
+| TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
+| REG-123456 | secret | Active | The users password is temporary and cannot be used to access service. |
 
 # References
 
