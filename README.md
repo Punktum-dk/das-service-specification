@@ -1,6 +1,6 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2015/08/22
+2013/11/15
 Revision: 1.0
 
 # Table of Contents
@@ -13,6 +13,8 @@ Revision: 1.0
 - The .dk Registry in Brief
 - Domain Availability Service
 - Available Environments
+    - Production Environment
+    - Sandbox Environment
 - Implementation Limitations
     - AAA
     - Supported Media-types
@@ -74,12 +76,19 @@ DK Hostmaster offers the following environments:
 
 | Environment | Role | Policies |
 | ----------- | ---- | ----------- |
-| production  | production | This environment will be the production environment for the DK Hostmaster Domain Availability Service 
+| production  | production | This environment will be the production environment for the DK Hostmaster Domain Availability Service |
+| sandbox     | development | This environment is intended for client development towards the DK Hostmaster Domain Availability Service. |
+
+## Production Environment
+
 * is_available requests made to this environment will reflect live production data
-* production credentials and proper authorization are needed access the service |
-| sandbox     | development | This environment is intended for client development towards the DK Hostmaster Domain Availability Service.
-* is_available requests made to this environment will reflect dummy data. Please see the section on test data. 
-* The sandbox does not implement actual rate limiting, but offers simulated rate limiting by using a specific request, please see the section on test data. |
+* production credentials and proper authorization are needed access the service
+
+## Sandbox Environment
+
+* is_available requests made to this environment will reflect dummy data. 
+* Please see the section on test data. 
+* The sandbox does not implement actual rate limiting, but offers simulated rate limiting by using a specific request, please see the section on test data.
 
 # Implementation Limitations
 
