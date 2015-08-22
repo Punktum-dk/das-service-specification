@@ -184,6 +184,8 @@ domain_status:unavailable
 
 ## Examples for available domain
 
+JSON:
+
 `% curl --header Accept:application/json \
 https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk`
 
