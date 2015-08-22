@@ -147,8 +147,8 @@ URL path:
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
-| status | enumerated string | "string indicating status of request, either one of: `available`, `unavailable` or `blocked` | yes | |
-| message | enumerated string | string providing human rMeadable message, “ok” on success | optional |
+| status | enumerated string | string indicating status of request, either one of: `available`, `unavailable` or `blocked` | yes | |
+| message | enumerated string | string providing human readable message, “ok” on success | optional |
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
 
@@ -335,4 +335,4 @@ More information and the latest revision of this specification are available at 
 | 415 | Unsupported Media Type | The requested media type is unsupported, see section on Media Types |
 | 429 | Too many attempts | Rate limiting triggered, please see section on Rate Limiting |
 | 500 | Server Error | Service malfunction |
-| 503 | Service Unavailable Maintenance mode | 
+| 503 | Service Unavailable | Maintenance mode | 
