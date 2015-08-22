@@ -145,11 +145,8 @@ URL path:
 
 | Parameter | Type | Description | Mandatory | Example |
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
-| status | enumerated string | "string indicating status of request, either one of:
-* available
-* unavailable
-* blocked" | yes | |
-| message | enumerated string | string providing human readable message, “ok” on success | optional |
+| status | enumerated string | "string indicating status of request, either one of: `available`, `unavailable` or `blocked` | yes | |
+| message | enumerated string | string providing human rMeadable message, “ok” on success | optional |
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
 
