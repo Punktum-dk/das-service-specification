@@ -242,6 +242,7 @@ http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf`
 Please note the -v flag to `curl` and that the response has been stripped down.
 
 Text:
+
 `% curl -v --header Accept:text/plain \
 http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf`
 
