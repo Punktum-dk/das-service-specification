@@ -129,6 +129,7 @@ Please note the sandbox environment is not under rate limiting at this time, due
 The service uses a basic session handling based on cookies. 
 
 | Parameter | Value | Description |
+|+++++++++++|+++++++|+++++++++++++|
 | cookie name | dkhm-das-session | This is the name of the cookie |
 | cookie domain | .dk-hostmaster.dk |  
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
@@ -144,6 +145,7 @@ URL path:
     `/domain/is_available/<domain>`
 
 | Parameter | Type | Description | Mandatory | Example |
+|+++++++++++|++++++|+++++++++++++|+++++++++++|+++++++++|
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
 | status | enumerated string | "string indicating status of request, either one of: `available`, `unavailable` or `blocked` | yes | |
 | message | enumerated string | string providing human rMeadable message, “ok” on success | optional |
@@ -267,6 +269,7 @@ The sandbox uses a predefined set of test data.
 ## Domains
 
 | Domain name | Status | Notes |
+|+++++++++++++|++++++++|+++++++|
 | dk-hostmaster.dk | Unavailable | The domain is active |
 | asdf.dk | Available | Not in the registry at this time |
 | blocked.dk | Available | The domain status is blocked |
@@ -275,6 +278,7 @@ The sandbox uses a predefined set of test data.
 ## Accounts / Credentials
 
 | Username   | Password | Status | Notes |
+|++++++++++++|++++++++++|++++++++|+++++++|
 | REG-999999 | secret | Active | The domain status us active |
 | TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
 | REG-123456 | secret | Active | The users password is temporary and cannot be used to access service. |
@@ -313,14 +317,16 @@ More information and the latest revision of this specification are available at 
 # Data Sheet
 
 | Environment | Version | URI | Notes |
-| Production  | N/A     | das.dk-hostmaster.dk | Not released at this time. | 
-| Sandbox     | 1.0.0   | das-sandbox.dk-hostmaster.dk | Released on 2013.20.05 |
+|+++++++++++++|+++++++++|+++++|+++++++|
+| Production | N/A | das.dk-hostmaster.dk | Not released at this time. | 
+| Sandbox | 1.0.0 | das-sandbox.dk-hostmaster.dk | Released on 2013.20.05 |
 
 # Appendices
 
 ## HTTP Status Codes
 
 | Status code | Message | Description |
+|+++++++++++++|+++++++++|+++++++++++++|
 | 200 | OK | Service returned a valid response |
 | 400 | Bad request | The request could not be fulfilled due to missing parameters or malformed syntax |
 | 401 | Unauthorized | Authentication failed |
