@@ -155,20 +155,22 @@ Default HTTP header observed: 200 OK. Additional status data in Status and Messa
 ## Examples for unavailable domain
 
 JSON:
-```
+```Shell
 % curl --header Accept:application/json \
 https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
-`{"domain":"dk-hostmaster.dk","status":"ok","domain_status":"unavailable"}`
+```JSON
+{"domain":"dk-hostmaster.dk","status":"ok","domain_status":"unavailable"}
+```
 
 XML:
-```
+```Shell
 % curl --header Accept:application/xml \ 
 https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
-```
+```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
   <domain>dk-hostmaster.dk</domain>
@@ -177,7 +179,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hos
 ```
 
 Text:
-```
+```Shell
 % curl --header Accept:text/plain \
 http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
@@ -196,15 +198,17 @@ JSON:
 https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
 ```
 
-`{"domain":"adsf.dk","status":"ok","domain_status":"available"}``
+```JSON
+{"domain":"adsf.dk","status":"ok","domain_status":"available"}
+```
 
 XML:
-```
+```Shell
 % curl --header Accept:application/xml \ 
 https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
-```
+```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
   <domain>adsf.dk</domain>
@@ -214,7 +218,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.d
 ```
 
 Text:
-```
+```Shell
 % curl --header Accept:text/plain \
 http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
@@ -230,7 +234,7 @@ domain_status:available
 Please note the -v flag to curl and that the response has been stripped down.
 
 Text:
-```
+```Shell
 % curl -v --header Accept:text/plain \
 http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
@@ -252,7 +256,7 @@ http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 Please note the -v flag to `curl` and that the response has been stripped down.
 
 Text:
-```
+```Shell
 % curl -v --header Accept:text/plain \
 http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
