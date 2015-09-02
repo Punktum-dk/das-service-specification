@@ -5,38 +5,38 @@ Revision: 1.1
 
 # Table of Contents
 
-<!-- MarkdownTOC -->
+<!-- MarkdownTOC bracket=round -->
 
-- [Introduction][introduction]
-- [About this Document][about-this-document]
-  - [Document History][document-history]
-- [The .dk Registry in Brief][the-dk-registry-in-brief]
-- [Domain Availability Service][domain-availability-service]
-- [Available Environments][available-environments]
-  - [Production Environment][production-environment]
-  - [Sandbox Environment][sandbox-environment]
-- [Implementation Limitations][implementation-limitations]
-  - [AAA][aaa]
-  - [Supported Media-types][supported-media-types]
-  - [Rate Limiting][rate-limiting]
-- [Session Handling][session-handling]
-- [Service `/domain/is_available`][service-domainis_available]
-  - [Request][request]
-  - [Examples for unavailable domain][examples-for-unavailable-domain]
-  - [Examples for available domain][examples-for-available-domain]
-  - [Example with bad domain parameter][example-with-bad-domain-parameter]
-  - [Example with bad credentials][example-with-bad-credentials]
-- [Test Data][test-data]
-  - [Domains][domains]
-  - [Accounts / Credentials][accounts--credentials]
-- [References][references]
-- [Resources][resources]
-  - [Mailing list][mailing-list]
-  - [Issue Reporting][issue-reporting]
-  - [Additional Information][additional-information]
-- [Data Sheet][data-sheet]
-- [Appendices][appendices]
-  - [HTTP Status Codes][http-status-codes]
+- [Introduction](#introduction)
+- [About this Document](#about-this-document)
+  - [Document History](#document-history)
+- [The .dk Registry in Brief](#the-dk-registry-in-brief)
+- [Domain Availability Service](#domain-availability-service)
+- [Available Environments](#available-environments)
+  - [Production Environment](#production-environment)
+  - [Sandbox Environment](#sandbox-environment)
+- [Implementation Limitations](#implementation-limitations)
+  - [AAA](#aaa)
+  - [Supported Media-types](#supported-media-types)
+  - [Rate Limiting](#rate-limiting)
+- [Session Handling](#session-handling)
+- [Service `/domain/is_available`](#service-domainis_available)
+  - [Request](#request)
+  - [Examples for unavailable domain](#examples-for-unavailable-domain)
+  - [Examples for available domain](#examples-for-available-domain)
+  - [Example with bad domain parameter](#example-with-bad-domain-parameter)
+  - [Example with bad credentials](#example-with-bad-credentials)
+- [Test Data](#test-data)
+  - [Domains](#domains)
+  - [Accounts / Credentials](#accounts--credentials)
+- [References](#references)
+- [Resources](#resources)
+  - [Mailing list](#mailing-list)
+  - [Issue Reporting](#issue-reporting)
+  - [Additional Information](#additional-information)
+- [Data Sheet](#data-sheet)
+- [Appendices](#appendices)
+  - [HTTP Status Codes](#http-status-codes)
 
 <!-- /MarkdownTOC -->
 
