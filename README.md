@@ -1,42 +1,42 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2013/11/15
-Revision: 1.0
+2015/09/02
+Revision: 1.1
 
 # Table of Contents
 
 <!-- MarkdownTOC -->
 
-- Introduction
-- About this Document
-    - Document History
-- The .dk Registry in Brief
-- Domain Availability Service
-- Available Environments
-    - Production Environment
-    - Sandbox Environment
-- Implementation Limitations
-    - AAA
-    - Supported Media-types
-    - Rate Limiting
-- Session Handling
-- Service `/domain/is_available`
-    - Request
-    - Examples for unavailable domain
-    - Examples for available domain
-    - Example with bad domain parameter
-    - Example with bad credentials
-- Test Data
-    - Domains
-    - Accounts / Credentials
-- References
-- Resources
-    - Mailing list
-    - Issue Reporting
-    - Additional Information
-- Data Sheet
-- Appendices
-    - HTTP Status Codes
+- [Introduction][introduction]
+- [About this Document][about-this-document]
+  - [Document History][document-history]
+- [The .dk Registry in Brief][the-dk-registry-in-brief]
+- [Domain Availability Service][domain-availability-service]
+- [Available Environments][available-environments]
+  - [Production Environment][production-environment]
+  - [Sandbox Environment][sandbox-environment]
+- [Implementation Limitations][implementation-limitations]
+  - [AAA][aaa]
+  - [Supported Media-types][supported-media-types]
+  - [Rate Limiting][rate-limiting]
+- [Session Handling][session-handling]
+- [Service `/domain/is_available`][service-domainis_available]
+  - [Request][request]
+  - [Examples for unavailable domain][examples-for-unavailable-domain]
+  - [Examples for available domain][examples-for-available-domain]
+  - [Example with bad domain parameter][example-with-bad-domain-parameter]
+  - [Example with bad credentials][example-with-bad-credentials]
+- [Test Data][test-data]
+  - [Domains][domains]
+  - [Accounts / Credentials][accounts--credentials]
+- [References][references]
+- [Resources][resources]
+  - [Mailing list][mailing-list]
+  - [Issue Reporting][issue-reporting]
+  - [Additional Information][additional-information]
+- [Data Sheet][data-sheet]
+- [Appendices][appendices]
+  - [HTTP Status Codes][http-status-codes]
 
 <!-- /MarkdownTOC -->
 
@@ -52,7 +52,10 @@ Any future extensions and possible additions and changes to the implementation a
 
 ## Document History
 
-* 1.0 2013.02.25
+* 1.1 2015-09-02
+  * Migrated to markdown and hosting on Github, no changes to actual content just formatting 
+
+* 1.0 2013-02-25
   * Initial revision
 
 # The .dk Registry in Brief
