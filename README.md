@@ -123,7 +123,7 @@ If content type is not specified, response will reflect this with an HTTP status
 We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service. 
 If rate limit is exceeded the HTTP status code 429 “Too many requests” is returned. Further, the response will have a `Retry-After` header that tells you for how many seconds to wait before retrying. 
 
-Current limit is set to 60 requests perl minute.
+Current limit is set to 60 requests per minute.
 
 Please note the sandbox environment is not under rate limiting at this time, due to a wish for unlimited use for developers. 
 
