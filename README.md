@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2015/09/02
-Revision: 1.1
+2016/04/19
+Revision: 1.2
 
 # Table of Contents
 
@@ -50,7 +50,13 @@ This specification describes version 1 (1.0.x) of the DK Hostmaster DAS Implemen
 The document describes the current DK Hostmaster DAS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
+Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
+
 ## Document History
+
+* 1.2 2016-04-19
+  * Filled in data in the datasheet, more information will follow
+  * Filled in details on blocking policy for failed login attempts based on user-id and IP-address 
 
 * 1.1 2015-09-02
   * Migrated to markdown and hosting on Github, no changes to actual content just formatting 
@@ -105,7 +111,9 @@ The punycode encoded example of: xn--kdplg-orai3l.dk will be evaluated as xn--kd
 
 This service is called using Basic HTTP Authentication supporting current login credentials.
 
-Too many login attempts will block the account. Todo: Block details...
+Too many failed login attempts will block the account. The block for a user-id lasts for 24 hours and it automatically lifted. 
+
+If failing login attempts continue or is spread across user-ids originating from the same IP-address the IP-address will be blocked. The block for an IP-address lasts for 24 hours and it automatically lifted. 
 
 ## Supported Media-types
 
@@ -334,8 +342,8 @@ More information and the latest revision of this specification are available at 
 
 | Environment | Version | URI | Notes |
 |-------------|---------|-----|-------|
-| Production | N/A | das.dk-hostmaster.dk | Not released at this time. | 
-| Sandbox | 1.0.0 | das-sandbox.dk-hostmaster.dk | Released on 2013.20.05 |
+| Production | 1.1.0 | das.dk-hostmaster.dk | Released on 2014-08-11 | 
+| Sandbox | 1.0.0 | das-sandbox.dk-hostmaster.dk | Released on 2013-20-05 |
 
 # Appendices
 
