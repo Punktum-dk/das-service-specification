@@ -34,6 +34,7 @@ Revision: 1.2
   - [Mailing list](#mailing-list)
   - [Issue Reporting](#issue-reporting)
   - [Additional Information](#additional-information)
+  - [Demo Client](#demo-client)
 - [Data Sheet](#data-sheet)
 - [Appendices](#appendices)
   - [HTTP Status Codes](#http-status-codes)
@@ -54,9 +55,13 @@ Printable version can be obtained via [this link](https://gitprint.com/DK-Hostma
 
 ## Document History
 
+* 1.3
+  * Added link to demo client, also available on Github  
+
 * 1.2 2016-04-19
   * Filled in data in the datasheet, more information will follow
   * Filled in details on blocking policy for failed login attempts based on user-id and IP-address 
+  * Added link to the gitprint service
 
 * 1.1 2015-09-02
   * Migrated to markdown and hosting on Github, no changes to actual content just formatting 
@@ -336,7 +341,11 @@ For issue reporting related to this specification, the DAS implementation or san
 
 More information and the latest revision of this specification are available at the DK Hostmaster website:
 
-  * `https://www.dk-hostmaster.dk/english/tech-notes/das/``
+  * `https://www.dk-hostmaster.dk/english/tech-notes/das/`
+
+## Demo Client
+
+A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is available as open source. 
 
 # Data Sheet
 
