@@ -339,7 +339,7 @@ For issue reporting related to this specification, the DAS implementation or san
 
 ## Additional Information
 
-More information and the latest revision of this specification are available at the DK Hostmaster website:
+The DK Hostmaster website:
 
   * `https://www.dk-hostmaster.dk/english/tech-notes/das/`
 
