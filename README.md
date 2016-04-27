@@ -72,7 +72,7 @@ Printable version can be obtained via [this link](https://gitprint.com/DK-Hostma
 # The .dk Registry in Brief
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
-The service does is not subject to any sorts of standards, but adheres to practices in implementation of REST and use of HTTP in context of REST.
+The service is not subject to any sorts of standards, but adheres to practices in implementation of REST and use of HTTP in context of REST.
 
 # Domain Availability Service
 
