@@ -9,6 +9,7 @@ Revision: 1.2
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
+  - [License](#license)
   - [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [Domain Availability Service](#domain-availability-service)
@@ -52,6 +53,10 @@ The document describes the current DK Hostmaster DAS implementation, for more ge
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
 Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
+
+## License
+
+This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
 ## Document History
 
