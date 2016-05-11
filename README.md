@@ -1,5 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
+# *DRAFT*
+
 2016/04/19
 Revision: 1.2
 
@@ -21,6 +23,7 @@ Revision: 1.2
   - [Supported Media-types](#supported-media-types)
   - [Rate Limiting](#rate-limiting)
 - [Session Handling](#session-handling)
+  - [Domain Status](#domain-status)
 - [Service `/domain/is_available`](#service-domainis_available)
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
@@ -59,6 +62,9 @@ Printable version can be obtained via [this link](https://gitprint.com/DK-Hostma
 This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
 ## Document History
+
+* 1.4
+  * Added information on new status `awaiting`
 
 * 1.3
   * Added link to demo client, also available on Github  
@@ -155,6 +161,26 @@ The service uses a basic session handling based on cookies.
 | cookie domain | .dk-hostmaster.dk |  
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
+## Domain Status
+
+The service returns a queried domain name and it's status if possible. The different domain status has the following meanings:
+
+### Available
+
+A given domain name is available for application.
+
+### Unavailable
+
+A given domain name is in use and is not available for application.
+
+### Blocked
+
+A given domain name is in a special state handled by the registrant, but is available for application.
+
+### Awaiting
+
+A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
+
 # Service `/domain/is_available`
 
 ## Request
@@ -168,7 +194,7 @@ URL path:
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
-| status | enumerated string | string indicating status of request, either one of: `available`, `unavailable` or `blocked` | yes | |
+| status | enumerated string | string indicating status of request, either one of: `available`, `unavailable`, `awaiting` or `blocked` | yes | |
 | message | enumerated string | string providing human readable message, “ok” on success | optional |
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
@@ -306,6 +332,7 @@ The sandbox uses a predefined set of test data.
 |-------------|--------|-------|
 | dk-hostmaster.dk | Unavailable | The domain is active |
 | asdf.dk | Available | Not in the registry at this time |
+| awaiting.dk | Available | The domain status is awaiting a specific registrant |
 | blocked.dk | Available | The domain status is blocked |
 | æøåöäüé.dk | Unavailable | This domain is active |
 
