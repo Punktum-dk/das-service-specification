@@ -175,9 +175,11 @@ A given domain name is in use and is not available for application.
 
 ### Blocked
 
-A given domain name is in a special state handled by the registrant, but is available for application.
+A given domain name is in a special state where the application is handled by the registrant, but is available for application.
 
-### Awaiting
+Please note that the DAS service translates the state of `blocked` to `available`, since the domain is available for application eventhought the application process is different. 
+
+### Available-on-waitinglist
 
 A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
 
