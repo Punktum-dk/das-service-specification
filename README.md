@@ -359,7 +359,7 @@ Here is a list of documents and references used in this document
 
 # Resources
 
-A list of resources for DK Hostmaster DAS support is listed below.
+A list of resources for DK Hostmaster DAS service support is listed below.
 
 ## Mailing list
 
