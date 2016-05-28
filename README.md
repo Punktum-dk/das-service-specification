@@ -333,7 +333,6 @@ message:User authentication error
 
 The sandbox uses a predefined set of test data. All domains not listed in the below list will be reported as `available` in the sandbox environment.
 
-
 ## Domains
 
 | Domain name | Status | Notes |
