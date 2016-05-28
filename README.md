@@ -343,7 +343,7 @@ The sandbox uses a predefined set of test data.
 
 | Username   | Password | Status | Notes |
 |------------|----------|--------|-------|
-| REG-999999 | secret | Active | The domain status us active |
+| REG-999999 | secret | Active | The user is active and can be used to access the service |
 | TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
 | REG-123456 | secret | Active | The users password is temporary and cannot be used to access service. |
 
