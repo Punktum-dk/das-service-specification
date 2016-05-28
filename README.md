@@ -63,7 +63,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ## Document History
 
 * 1.4
-  * Added information on new status `awaiting`
+  * Added information on new status `available-on-waiting-list`
 
 * 1.3
   * Added link to demo client, also available on Github  
@@ -335,7 +335,7 @@ The sandbox uses a predefined set of test data.
 |-------------|--------|-------|
 | dk-hostmaster.dk | Unavailable | The domain is active |
 | asdf.dk | Available | Not in the registry at this time |
-| awaiting.dk | Available | The domain status is awaiting a specific registrant |
+| waiting-list.dk | Available | The domain status is awaiting a specific registrant |
 | blocked.dk | Available | The domain status is blocked |
 | æøåöäüé.dk | Unavailable | This domain is active |
 
