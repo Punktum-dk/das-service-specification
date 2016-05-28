@@ -207,7 +207,7 @@ Default HTTP header observed: 200 OK. Additional status data in Status and Messa
 JSON:
 ```Shell
 % curl --header Accept:application/json \
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```JSON
@@ -217,7 +217,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hos
 XML:
 ```Shell
 % curl --header Accept:application/xml \ 
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```XML
@@ -231,7 +231,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hos
 Text:
 ```Shell
 % curl --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```
@@ -245,7 +245,7 @@ domain_status:unavailable
 JSON:
 ```
 % curl --header Accept:application/json \
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
 ```
 
 ```JSON
@@ -255,7 +255,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.d
 XML:
 ```Shell
 % curl --header Accept:application/xml \ 
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```XML
@@ -270,7 +270,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.d
 Text:
 ```Shell
 % curl --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```
@@ -286,7 +286,7 @@ Please note the -v flag to curl and that the response has been stripped down.
 Text:
 ```Shell
 % curl -v --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```
@@ -308,7 +308,7 @@ Please note the -v flag to `curl` and that the response has been stripped down.
 Text:
 ```Shell
 % curl -v --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```
