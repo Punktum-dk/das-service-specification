@@ -7,7 +7,7 @@ Revision: 1.2
 
 # Table of Contents
 
-<!-- MarkdownTOC bracket=round -->
+<!-- MarkdownTOC bracket=round depth=3 -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
@@ -24,6 +24,10 @@ Revision: 1.2
   - [Rate Limiting](#rate-limiting)
 - [Session Handling](#session-handling)
   - [Domain Status](#domain-status)
+    - [Available: `available`](#available-available)
+    - [Unavailable: `unavailable`](#unavailable-unavailable)
+    - [Blocked: `blocked`](#blocked-blocked)
+    - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
 - [Service `/domain/is_available`](#service-domainis_available)
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
@@ -164,23 +168,23 @@ The service uses a basic session handling based on cookies.
 
 The service returns a queried domain name and it's status if possible. The different domain status has the following meanings:
 
-### Available
+### Available: `available`
 
 A given domain name is available for application.
 
-### Unavailable
+### Unavailable: `unavailable`
 
 A given domain name is in use and is not available for application.
 
-### Blocked
+### Blocked: `blocked`
 
 A given domain name is in a special state where the application is handled by the registrant, but is available for application.
 
-Please note that the DAS service translates the state of `blocked` to `available`, since the domain is available for application eventhought the application process is different. 
+Please note that a `blocked` domain name can be interpreted as `available`, since the domain is available for application eventhought the application process is different. 
 
 Please refer to the: [General Terms and Conditions|general_terms_and_conditions].
 
-### available-on-waiting-list
+### Available for designated user from waiting list: `available-on-waiting-list`
 
 A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
 
@@ -327,17 +331,19 @@ message:User authentication error
 
 # Test Data
 
-The sandbox uses a predefined set of test data.
+The sandbox uses a predefined set of test data. All domains not listed in the below list will be reported as `available` in the sandbox environment.
+
 
 ## Domains
 
 | Domain name | Status | Notes |
 |-------------|--------|-------|
-| dk-hostmaster.dk | Unavailable | The domain is active |
-| asdf.dk | Available | Not in the registry at this time |
-| waiting-list.dk | Available | The domain status is awaiting a specific registrant |
-| blocked.dk | Available | The domain status is blocked |
-| æøåöäüé.dk | Unavailable | This domain is active |
+| dk-hostmaster.dk | `unavailable` | The domain is active |
+| waiting-list.dk | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
+| blocked.dk | `blocked` | The domain status is blocked |
+| æøåöäüé.dk | `unavailable` | This domain is active |
+| * | `available` | Everything not listed above will be reported as `available` |
+
 
 ## Accounts / Credentials
 
