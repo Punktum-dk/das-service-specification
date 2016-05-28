@@ -179,6 +179,8 @@ A given domain name is in a special state where the application is handled by th
 
 Please note that the DAS service translates the state of `blocked` to `available`, since the domain is available for application eventhought the application process is different. 
 
+Please refer to the: [General Terms and Conditions|general_terms_and_conditions].
+
 ### Available-on-waitinglist
 
 A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
@@ -403,3 +405,5 @@ A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is
 | 429 | Too many attempts | Rate limiting triggered, please see section on Rate Limiting |
 | 500 | Server Error | Service malfunction |
 | 503 | Service Unavailable | Maintenance mode | 
+
+[general_terms_and_conditions]: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
