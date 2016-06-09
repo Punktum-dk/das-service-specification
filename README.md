@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2016/04/19
-Revision: 1.2
+2016/06/09
+Revision: 1.3
 
 # Table of Contents
 
@@ -42,10 +42,12 @@ Revision: 1.2
 
 <!-- /MarkdownTOC -->
 
+<a name="introduction"></a>
 # Introduction
 
 This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the Domain Availability Service (DAS). It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of HTTP and possibly DNS registration.
 
+<a name="about-this-document"></a>
 # About this Document
 
 This specification describes version 1 (1.0.x) of the DK Hostmaster DAS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
@@ -54,13 +56,15 @@ Any future extensions and possible additions and changes to the implementation a
 
 Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
 
+<a name="license"></a>
 ## License
 
 This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
+<a name="document-history"></a>
 ## Document History
 
-* 1.3
+* 1.3 2016-06-09
   * Added link to demo client, also available on Github  
 
 * 1.2 2016-04-19
@@ -74,11 +78,13 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 * 1.0 2013-02-25
   * Initial revision
 
+<a name="the-dk-registry-in-brief"></a>
 # The .dk Registry in Brief
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
 The service is not subject to any sorts of standards, but adheres to practices in implementation of REST and use of HTTP in context of REST.
 
+<a name="domain-availability-service"></a>
 # Domain Availability Service
 
 The DK Hostmaster’s DAS is based on a SOA architecture. The implementation is regarded as a service offered to external parties requiring inquiry actions towards the DK Hostmaster registry.
@@ -89,6 +95,7 @@ The service requires the use of and possible development of client software. Thi
 
 In addition to the assets, DK Hostmaster aims to assist users and developers of possible client software with integration towards DK Hostmaster and therefore provide facilities to ease this integration. This is primarily centered around a sandbox environment and related documentation.
 
+<a name="available-environments"></a>
 # Available Environments
 
 DK Hostmaster offers the following environments:
@@ -98,17 +105,20 @@ DK Hostmaster offers the following environments:
 | production  | production | This environment will be the production environment for the DK Hostmaster Domain Availability Service |
 | sandbox     | development | This environment is intended for client development towards the DK Hostmaster Domain Availability Service. |
 
+<a name="production-environment"></a>
 ## Production Environment
 
 * is_available requests made to this environment will reflect live production data
 * production credentials and proper authorization are needed access the service
 
+<a name="sandbox-environment"></a>
 ## Sandbox Environment
 
 * is_available requests made to this environment will reflect dummy data. 
 * Please see the section on test data. 
 * The sandbox does not implement actual rate limiting, but offers simulated rate limiting by using a specific request, please see the section on test data.
 
+<a name="implementation-limitations"></a>
 # Implementation Limitations
 
 In general the service is not localized and all DAS related errors and messages are provided in English. 
@@ -117,6 +127,7 @@ The only localization support provided by the service is the support for IDN dom
 
 The punycode encoded example of: xn--kdplg-orai3l.dk will be evaluated as xn--kdplg-orai3l.dk and not decoded to kødpålæg.dk prior to evaluation.
 
+<a name="aaa"></a>
 ## AAA
 
 This service is called using Basic HTTP Authentication supporting current login credentials.
@@ -125,6 +136,7 @@ Too many failed login attempts will block the account. The block for a user-id l
 
 If failing login attempts continue or is spread across user-ids originating from the same IP-address the IP-address will be blocked. The block for an IP-address lasts for 24 hours and it automatically lifted. 
 
+<a name="supported-media-types"></a>
 ## Supported Media-types
 
 The service supports JSON, XML and plain text format, using the UTF-8 character set. In order to specify what format you want to retrieve the format should be specified in the HTTP header: Accept-header.
@@ -136,6 +148,7 @@ Control the content type by setting header info, using the below examples:
 
 If content type is not specified, response will reflect this with an HTTP status code: 415 (see: HTTP status code listing in appendices).
 
+<a name="rate-limiting"></a>
 ## Rate Limiting
 
 We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service. 
@@ -145,6 +158,7 @@ Current limit is set to 60 requests per minute.
 
 Please note the sandbox environment is not under rate limiting at this time, due to a wish for unlimited use for developers. 
 
+<a name="session-handling"></a>
 # Session Handling
 
 The service uses a basic session handling based on cookies. 
@@ -155,8 +169,10 @@ The service uses a basic session handling based on cookies.
 | cookie domain | .dk-hostmaster.dk |  
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
+<a name="service-domainis_available"></a>
 # Service `/domain/is_available`
 
+<a name="request"></a>
 ## Request
 
 Method: 
@@ -173,6 +189,7 @@ URL path:
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
 
+<a name="examples-for-unavailable-domain"></a>
 ## Examples for unavailable domain
 
 JSON:
@@ -211,6 +228,7 @@ status:ok
 domain_status:unavailable
 ```
 
+<a name="examples-for-available-domain"></a>
 ## Examples for available domain
 
 JSON:
@@ -250,6 +268,7 @@ status:ok
 domain_status:available
 ```
 
+<a name="example-with-bad-domain-parameter"></a>
 ## Example with bad domain parameter
 
 Please note the -v flag to curl and that the response has been stripped down.
@@ -272,6 +291,7 @@ http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 "Unsupported media type"
 ```
 
+<a name="example-with-bad-credentials"></a>
 ## Example with bad credentials
 
 Please note the -v flag to `curl` and that the response has been stripped down.
@@ -296,10 +316,12 @@ status:error
 message:User authentication error
 ```
 
+<a name="test-data"></a>
 # Test Data
 
 The sandbox uses a predefined set of test data.
 
+<a name="domains"></a>
 ## Domains
 
 | Domain name | Status | Notes |
@@ -309,6 +331,7 @@ The sandbox uses a predefined set of test data.
 | blocked.dk | Available | The domain status is blocked |
 | æøåöäüé.dk | Unavailable | This domain is active |
 
+<a name="accounts--credentials"></a>
 ## Accounts / Credentials
 
 | Username   | Password | Status | Notes |
@@ -317,6 +340,7 @@ The sandbox uses a predefined set of test data.
 | TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
 | REG-123456 | secret | Active | The users password is temporary and cannot be used to access service. |
 
+<a name="references"></a>
 # References
 
 Here is a list of documents and references used in this document
@@ -326,32 +350,38 @@ Here is a list of documents and references used in this document
 * RFC: 2617 HTTP Authentication: Basic and Digest Access Authentication: http://tools.ietf.org/html/rfc2617
 * Documentation on the format of a domain name with the DK Hostmaster A/S registry: https://www.dk-hostmaster.dk/english/technical-administration/forms/register-domainname/
 
+<a name="resources"></a>
 # Resources
 
 A list of resources for DK Hostmaster DAS support is listed below.
 
+<a name="mailing-list"></a>
 ## Mailing list
 
 DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster DAS implementation. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
 
 * `das-discuss+subscribe@liste.dk-hostmaster.dk`
 
+<a name="issue-reporting"></a>
 ## Issue Reporting
 
 For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
 
  * `tech@dk-hostmaster.dk`
 
+<a name="additional-information"></a>
 ## Additional Information
 
 The DK Hostmaster website:
 
   * `https://www.dk-hostmaster.dk/english/tech-notes/das/`
 
+<a name="demo-client"></a>
 ## Demo Client
 
 A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is available as open source. 
 
+<a name="data-sheet"></a>
 # Data Sheet
 
 | Environment | Version | URI | Notes |
@@ -359,8 +389,10 @@ A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is
 | Production | 1.1.0 | das.dk-hostmaster.dk | Released on 2014-08-11 | 
 | Sandbox | 1.0.0 | das-sandbox.dk-hostmaster.dk | Released on 2013-20-05 |
 
+<a name="appendices"></a>
 # Appendices
 
+<a name="http-status-codes"></a>
 ## HTTP Status Codes
 
 | Status code | Message | Description |
