@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
 2016/06/09
-Revision: 1.3
+Revision: 1.4
 
 # Table of Contents
 
@@ -36,7 +36,6 @@ Revision: 1.3
   - [Issue Reporting](#issue-reporting)
   - [Additional Information](#additional-information)
   - [Demo Client](#demo-client)
-- [Data Sheet](#data-sheet)
 - [Appendices](#appendices)
   - [HTTP Status Codes](#http-status-codes)
 
@@ -63,6 +62,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a name="document-history"></a>
 ## Document History
+
+* 1.4 2016-06-09
+  * Removed obsolete datasheet
 
 * 1.3 2016-06-09
   * Added link to demo client, also available on Github  
@@ -380,14 +382,6 @@ The DK Hostmaster website:
 ## Demo Client
 
 A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is available as open source. 
-
-<a name="data-sheet"></a>
-# Data Sheet
-
-| Environment | Version | URI | Notes |
-|-------------|---------|-----|-------|
-| Production | 1.1.0 | das.dk-hostmaster.dk | Released on 2014-08-11 | 
-| Sandbox | 1.0.0 | das-sandbox.dk-hostmaster.dk | Released on 2013-20-05 |
 
 <a name="appendices"></a>
 # Appendices
