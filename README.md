@@ -355,7 +355,7 @@ Here is a list of documents and references used in this document
 <a name="resources"></a>
 # Resources
 
-A list of resources for DK Hostmaster DAS support is listed below.
+Resources for DK Hostmaster DAS support is listed below.
 
 <a name="mailing-list"></a>
 ## Mailing list
