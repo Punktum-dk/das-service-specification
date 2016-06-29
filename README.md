@@ -381,7 +381,7 @@ The DK Hostmaster website:
 <a name="demo-client"></a>
 ## Demo Client
 
-A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is available as open source. 
+A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is available as open source under a MIT license. 
 
 <a name="appendices"></a>
 # Appendices
