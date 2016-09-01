@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2016/06/09
-Revision: 1.4
+2016/09/01
+Revision: 1.5
 
 # Table of Contents
 
@@ -62,6 +62,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a name="document-history"></a>
 ## Document History
+
+* 1.5 2016-09-01
+  * Minor clarification on credentials 
 
 * 1.4 2016-06-09
   * Removed obsolete datasheet
@@ -132,7 +135,10 @@ The punycode encoded example of: xn--kdplg-orai3l.dk will be evaluated as xn--kd
 <a name="aaa"></a>
 ## AAA
 
-This service is called using Basic HTTP Authentication supporting current login credentials.
+This service is called using Basic HTTP Authentication supporting current authentication credentials, consisting of:
+
+- user-id / handle
+- password
 
 Too many failed login attempts will block the account. The block for a user-id lasts for 24 hours and it automatically lifted. 
 
