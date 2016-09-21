@@ -28,7 +28,7 @@ Revision: 1.4
     - [Unavailable: `unavailable`](#unavailable-unavailable)
     - [Blocked: `blocked`](#blocked-blocked)
     - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
-- [Service `/domain/is_available`](#service-domainis_available)
+- [Service `/domain/is_available`](#service-domainisavailable)
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
   - [Examples for available domain](#examples-for-available-domain)
@@ -181,7 +181,6 @@ The service uses a basic session handling based on cookies.
 | cookie domain | .dk-hostmaster.dk |  
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
-<<<<<<< HEAD
 <a name="domain-status"></a>
 ## Domain Status
 
@@ -211,7 +210,7 @@ Please refer to the: [General Terms and Conditions|general_terms_and_conditions]
 
 A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
 
-<a name="service-domainis_available"></a>
+<a name="service-domainisavailable"></a>
 # Service `/domain/is_available`
 
 <a name="request"></a>
