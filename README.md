@@ -1,11 +1,11 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2016/09/01
-Revision: 1.5
+2016/10/18
+Revision: 1.6
 
 # Table of Contents
 
-<!-- MarkdownTOC bracket=round -->
+<!-- MarkdownTOC bracket=round depth=3 -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
@@ -21,7 +21,12 @@ Revision: 1.5
   - [Supported Media-types](#supported-media-types)
   - [Rate Limiting](#rate-limiting)
 - [Session Handling](#session-handling)
-- [Service `/domain/is_available`](#service-domainis_available)
+  - [Domain Status](#domain-status)
+    - [Available: `available`](#available-available)
+    - [Unavailable: `unavailable`](#unavailable-unavailable)
+    - [Blocked: `blocked`](#blocked-blocked)
+    - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
+- [Service `/domain/is_available`](#service-domainisavailable)
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
   - [Examples for available domain](#examples-for-available-domain)
@@ -62,6 +67,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a name="document-history"></a>
 ## Document History
+
+* 1.6 2016-10-18
+  * Added information on new status `available-on-waiting-list`
 
 * 1.5 2016-09-01
   * Minor clarification on credentials 
@@ -177,7 +185,36 @@ The service uses a basic session handling based on cookies.
 | cookie domain | .dk-hostmaster.dk |  
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
-<a name="service-domainis_available"></a>
+<a name="domain-status"></a>
+## Domain Status
+
+The service returns a queried domain name and it's status if possible. The different domain status has the following meanings:
+
+<a name="available-available"></a>
+### Available: `available`
+
+A given domain name is available for application.
+
+<a name="unavailable-unavailable"></a>
+### Unavailable: `unavailable`
+
+A given domain name is in use and is not available for application.
+
+<a name="blocked-blocked"></a>
+### Blocked: `blocked`
+
+A given domain name is in a special state where the application is handled by the registrant, but is available for application.
+
+Please note that a `blocked` domain name can be interpreted as `available`, since the domain is available for application eventhought the application process is different. 
+
+Please refer to the: [General Terms and Conditions|general_terms_and_conditions].
+
+<a name="available-for-designated-user-from-waiting-list-available-on-waiting-list"></a>
+### Available for designated user from waiting list: `available-on-waiting-list`
+
+A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
+
+<a name="service-domainisavailable"></a>
 # Service `/domain/is_available`
 
 <a name="request"></a>
@@ -192,7 +229,7 @@ URL path:
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
-| status | enumerated string | string indicating status of request, either one of: `available`, `unavailable` or `blocked` | yes | |
+| status | enumerated string | string indicating status of request, either one of: `available`, `unavailable`, `blocked` or `available-on-waiting-list` | yes | |
 | message | enumerated string | string providing human readable message, “ok” on success | optional |
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
@@ -203,7 +240,7 @@ Default HTTP header observed: 200 OK. Additional status data in Status and Messa
 JSON:
 ```Shell
 % curl --header Accept:application/json \
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```JSON
@@ -213,7 +250,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hos
 XML:
 ```Shell
 % curl --header Accept:application/xml \ 
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```XML
@@ -227,7 +264,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hos
 Text:
 ```Shell
 % curl --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```
@@ -242,7 +279,7 @@ domain_status:unavailable
 JSON:
 ```
 % curl --header Accept:application/json \
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
 ```
 
 ```JSON
@@ -252,7 +289,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.d
 XML:
 ```Shell
 % curl --header Accept:application/xml \ 
-https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```XML
@@ -267,7 +304,7 @@ https://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.d
 Text:
 ```Shell
 % curl --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```
@@ -284,7 +321,7 @@ Please note the -v flag to curl and that the response has been stripped down.
 Text:
 ```Shell
 % curl -v --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```
@@ -307,7 +344,7 @@ Please note the -v flag to `curl` and that the response has been stripped down.
 Text:
 ```Shell
 % curl -v --header Accept:text/plain \
-http://REG-12345:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```
@@ -327,24 +364,26 @@ message:User authentication error
 <a name="test-data"></a>
 # Test Data
 
-The sandbox uses a predefined set of test data.
+The sandbox uses a predefined set of test data. All domains not listed in the below list will be reported as `available` in the sandbox environment.
 
 <a name="domains"></a>
 ## Domains
 
 | Domain name | Status | Notes |
 |-------------|--------|-------|
-| dk-hostmaster.dk | Unavailable | The domain is active |
-| asdf.dk | Available | Not in the registry at this time |
-| blocked.dk | Available | The domain status is blocked |
-| æøåöäüé.dk | Unavailable | This domain is active |
+| dk-hostmaster.dk | `unavailable` | The domain is active |
+| waiting-list.dk | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
+| blocked.dk | `blocked` | The domain status is blocked |
+| æøåöäüé.dk | `unavailable` | This domain is active |
+| * | `available` | Everything not listed above will be reported as `available` |
+
 
 <a name="accounts--credentials"></a>
 ## Accounts / Credentials
 
 | Username   | Password | Status | Notes |
 |------------|----------|--------|-------|
-| REG-999999 | secret | Active | The domain status us active |
+| REG-999999 | secret | Active | The user is active and can be used to access the service |
 | TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
 | REG-123456 | secret | Active | The users password is temporary and cannot be used to access service. |
 
@@ -361,6 +400,7 @@ Here is a list of documents and references used in this document
 <a name="resources"></a>
 # Resources
 
+<a name="a-list-of-resources-for-dk-hostmaster-das-service-support-is-listed-below"></a>
 Resources for DK Hostmaster DAS support is listed below.
 
 <a name="mailing-list"></a>
@@ -406,3 +446,5 @@ A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is
 | 429 | Too many attempts | Rate limiting triggered, please see section on Rate Limiting |
 | 500 | Server Error | Service malfunction |
 | 503 | Service Unavailable | Maintenance mode | 
+
+[general_terms_and_conditions]: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
