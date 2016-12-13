@@ -447,4 +447,4 @@ A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is
 | 500 | Server Error | Service malfunction |
 | 503 | Service Unavailable | Maintenance mode | 
 
-[general_terms_and_conditions]: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
+[general_terms_and_conditions]: https://www.dk-hostmaster.dk/en/general-conditions
