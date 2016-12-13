@@ -207,7 +207,7 @@ A given domain name is in a special state where the application is handled by th
 
 Please note that a `blocked` domain name can be interpreted as `available`, since the domain is available for application eventhought the application process is different. 
 
-Please refer to the: [General Terms and Conditions][general_terms_and_conditions].
+Please refer to the: [General Terms and Conditions][general_terms_and_conditions], section 3.3.2.
 
 <a name="available-for-designated-user-from-waiting-list-available-on-waiting-list"></a>
 ### Available for designated user from waiting list: `available-on-waiting-list`
