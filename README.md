@@ -9,40 +9,40 @@ Revision: 1.6
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
-  - [License](#license)
-  - [Document History](#document-history)
+	- [License](#license)
+	- [Document History](#document-history)
 - [The .dk Registry in Brief](#the-dk-registry-in-brief)
 - [Domain Availability Service](#domain-availability-service)
 - [Available Environments](#available-environments)
-  - [Production Environment](#production-environment)
-  - [Sandbox Environment](#sandbox-environment)
+	- [Production Environment](#production-environment)
+	- [Sandbox Environment](#sandbox-environment)
 - [Implementation Limitations](#implementation-limitations)
-  - [AAA](#aaa)
-  - [Supported Media-types](#supported-media-types)
-  - [Rate Limiting](#rate-limiting)
+	- [AAA](#aaa)
+	- [Supported Media-types](#supported-media-types)
+	- [Rate Limiting](#rate-limiting)
 - [Session Handling](#session-handling)
-  - [Domain Status](#domain-status)
-    - [Available: `available`](#available-available)
-    - [Unavailable: `unavailable`](#unavailable-unavailable)
-    - [Blocked: `blocked`](#blocked-blocked)
-    - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
+	- [Domain Status](#domain-status)
+		- [Available: `available`](#available-available)
+		- [Unavailable: `unavailable`](#unavailable-unavailable)
+		- [Blocked: `blocked`](#blocked-blocked)
+		- [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
 - [Service `/domain/is_available`](#service-domainisavailable)
-  - [Request](#request)
-  - [Examples for unavailable domain](#examples-for-unavailable-domain)
-  - [Examples for available domain](#examples-for-available-domain)
-  - [Example with bad domain parameter](#example-with-bad-domain-parameter)
-  - [Example with bad credentials](#example-with-bad-credentials)
+	- [Request](#request)
+	- [Examples for unavailable domain](#examples-for-unavailable-domain)
+	- [Examples for available domain](#examples-for-available-domain)
+	- [Example with bad domain parameter](#example-with-bad-domain-parameter)
+	- [Example with bad credentials](#example-with-bad-credentials)
 - [Test Data](#test-data)
-  - [Domains](#domains)
-  - [Accounts / Credentials](#accounts--credentials)
+	- [Domains](#domains)
+	- [Accounts / Credentials](#accounts--credentials)
 - [References](#references)
 - [Resources](#resources)
-  - [Mailing list](#mailing-list)
-  - [Issue Reporting](#issue-reporting)
-  - [Additional Information](#additional-information)
-  - [Demo Client](#demo-client)
+	- [Mailing list](#mailing-list)
+	- [Issue Reporting](#issue-reporting)
+	- [Additional Information](#additional-information)
+	- [Demo Client](#demo-client)
 - [Appendices](#appendices)
-  - [HTTP Status Codes](#http-status-codes)
+	- [HTTP Status Codes](#http-status-codes)
 
 <!-- /MarkdownTOC -->
 
@@ -158,9 +158,9 @@ If failing login attempts continue or is spread across user-ids originating from
 The service supports JSON, XML and plain text format, using the UTF-8 character set. In order to specify what format you want to retrieve the format should be specified in the HTTP header: Accept-header.
 Control the content type by setting header info, using the below examples:
 
-`Accept: application/json; charset=utf-8`
-`Accept: application/xml; charset=utf-8`
-`Accept: text/plain; charset=utf-8`
+- `Accept: application/json; charset=utf-8`
+- `Accept: application/xml; charset=utf-8`
+- `Accept: text/plain; charset=utf-8`
 
 If content type is not specified, response will reflect this with an HTTP status code: 415 (see: HTTP status code listing in appendices).
 
