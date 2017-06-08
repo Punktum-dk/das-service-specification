@@ -21,7 +21,7 @@ Revision: 1.6
 	- [Supported Media-types](#supported-media-types)
 	- [Rate Limiting](#rate-limiting)
 - [Session Handling](#session-handling)
-	- [Domain Status](#domain-status)
+- [Domain Status](#domain-status)
 		- [Available: `available`](#available-available)
 		- [Unavailable: `unavailable`](#unavailable-unavailable)
 		- [Blocked: `blocked`](#blocked-blocked)
@@ -186,7 +186,7 @@ The service uses a basic session handling based on cookies.
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
 <a name="domain-status"></a>
-## Domain Status
+# Domain Status
 
 The service returns a queried domain name and it's status if possible. The different domain status has the following meanings:
 
