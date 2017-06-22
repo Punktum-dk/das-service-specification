@@ -392,7 +392,7 @@ The sandbox uses a predefined set of test data. All domains not listed in the be
 
 Here is a list of documents and references used in this document
 
-* General Terms and Conditions: https://www.dk-hostmaster.dk/fileadmin/filer/pdf/generelle_vilkaar/general-conditions.pdf
+* [General Terms and Conditions][general_terms_and_conditions]
 * RFC: 2616 Hypertext Transfer Protocol -- HTTP/1.1: https://tools.ietf.org/html/rfc2616
 * RFC: 2617 HTTP Authentication: Basic and Digest Access Authentication: http://tools.ietf.org/html/rfc2617
 * Documentation on the format of a domain name with the DK Hostmaster A/S registry: https://www.dk-hostmaster.dk/english/technical-administration/forms/register-domainname/
