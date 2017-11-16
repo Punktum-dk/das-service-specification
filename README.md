@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2016/10/18
-Revision: 1.6
+2017-12-19
+Revision: 1.7
 
 # Table of Contents
 
@@ -24,7 +24,6 @@ Revision: 1.6
 - [Domain Status](#domain-status)
 		- [Available: `available`](#available-available)
 		- [Unavailable: `unavailable`](#unavailable-unavailable)
-		- [Blocked: `blocked`](#blocked-blocked)
 		- [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
 - [Service `/domain/is_available`](#service-domainisavailable)
 	- [Request](#request)
@@ -67,6 +66,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a name="document-history"></a>
 ## Document History
+
+* 1.7 2017-12-19
+  * Removed information on status `blocked`, which has been deprecated
 
 * 1.6 2016-10-18
   * Added information on new status `available-on-waiting-list`
@@ -199,15 +201,6 @@ A given domain name is available for application.
 ### Unavailable: `unavailable`
 
 A given domain name is in use and is not available for application.
-
-<a name="blocked-blocked"></a>
-### Blocked: `blocked`
-
-A given domain name is in a special state where the application is handled by the registrant, but is available for application.
-
-Please note that a `blocked` domain name can be interpreted as `available`, since the domain is available for application eventhought the application process is different. 
-
-Please refer to the: [General Terms and Conditions][general_terms_and_conditions], section 3.3.2.
 
 <a name="available-for-designated-user-from-waiting-list-available-on-waiting-list"></a>
 ### Available for designated user from waiting list: `available-on-waiting-list`
