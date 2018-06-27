@@ -57,7 +57,7 @@ This specification describes version 1 (1.0.x) of the DK Hostmaster DAS Implemen
 The document describes the current DK Hostmaster DAS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
-Printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
+A printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
 
 <a name="license"></a>
 ## License
@@ -97,7 +97,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 # The .dk Registry in Brief
 
 DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
-The service is not subject to any sorts of standards, but adheres to practices in implementation of REST and use of HTTP in context of REST.
+The service is not subject to any sorts of standards but adheres to best practices in the implementation of REST and use of HTTP in context of REST.
 
 <a name="domain-availability-service"></a>
 # Domain Availability Service
@@ -106,7 +106,7 @@ The DK Hostmaster’s DAS is based on a SOA architecture. The implementation is 
 
 DAS is an HTTP-based protocol aimed at providing a speedy interface for requesting information from the DK Hostmaster registry. The service is intended for machine-to-machine communication in a client-server setup. Please see the References chapter for more information on specifications and references for HTTP and related.
 
-The service requires the use of and possible development of client software. This is beyond the scope of this specification as the API and other assets for assisting in this are the primary object of this document.
+The service requires the use and possible development of client software. This is beyond the scope of this specification as the API and other assets for assisting in this are the primary object of this document.
 
 In addition to the assets, DK Hostmaster aims to assist users and developers of possible client software with integration towards DK Hostmaster and therefore provide facilities to ease this integration. This is primarily centered around a sandbox environment and related documentation.
 
@@ -124,7 +124,7 @@ DK Hostmaster offers the following environments:
 ## Production Environment
 
 * is_available requests made to this environment will reflect live production data
-* production credentials and proper authorization are needed access the service
+* production credentials and proper authorization are needed to access the service
 
 <a name="sandbox-environment"></a>
 ## Sandbox Environment
@@ -164,7 +164,7 @@ Control the content type by setting header info, using the below examples:
 - `Accept: application/xml; charset=utf-8`
 - `Accept: text/plain; charset=utf-8`
 
-If content type is not specified, response will reflect this with an HTTP status code: 415 (see: HTTP status code listing in appendices).
+If the content type is not specified, the response will reflect this with an HTTP status code: 415 (see: HTTP status code listing in appendices).
 
 <a name="rate-limiting"></a>
 ## Rate Limiting
@@ -174,7 +174,7 @@ If rate limit is exceeded the HTTP status code 429 “Too many requests” is re
 
 Current limit is set to 60 requests per minute.
 
-Please note the sandbox environment is not under rate limiting at this time, due to a wish for unlimited use for developers. 
+Please note the sandbox environment does not enforce rate limiting at this time, due to a wish for unlimited use for developers. 
 
 <a name="session-handling"></a>
 # Session Handling
@@ -205,7 +205,7 @@ A given domain name is in use and is not available for application.
 <a name="available-for-designated-user-from-waiting-list-available-on-waiting-list"></a>
 ### Available for designated user from waiting list: `available-on-waiting-list`
 
-A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to the this offer.
+A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to this offer.
 
 <a name="service-domainisavailable"></a>
 # Service `/domain/is_available`
@@ -222,8 +222,8 @@ URL path:
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
-| status | enumerated string | string indicating status of request, either one of: `available`, `unavailable`, `blocked` or `available-on-waiting-list` | yes | |
-| message | enumerated string | string providing human readable message, “ok” on success | optional |
+| status | enumerated string | string indicating the status of the request, either one of: `available`, `unavailable`, `blocked` or `available-on-waiting-list` | yes | |
+| message | enumerated string | string providing a human-readable message, “ok” on success | optional |
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
 
@@ -378,7 +378,7 @@ The sandbox uses a predefined set of test data. All domains not listed in the be
 |------------|----------|--------|-------|
 | REG-999999 | secret | Active | The user is active and can be used to access the service |
 | TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
-| REG-123456 | secret | Active | The users password is temporary and cannot be used to access service. |
+| REG-123456 | secret | Active | The users' password is temporary and cannot be used to access service. |
 
 <a name="references"></a>
 # References
@@ -399,14 +399,14 @@ Resources for DK Hostmaster DAS support is listed below.
 <a name="mailing-list"></a>
 ## Mailing list
 
-DK Hostmaster operates a mailing list for discussion and inquiries  about the DK Hostmaster DAS implementation. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
+DK Hostmaster operates a mailing list for discussion and inquiries about the DK Hostmaster DAS implementation. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
 
 * `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
 <a name="issue-reporting"></a>
 ## Issue Reporting
 
-For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise use the address specified below:
+For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise, use the address specified below:
 
  * `info@dk-hostmaster.dk`
 
