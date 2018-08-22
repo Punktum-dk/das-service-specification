@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2017-12-19
-Revision: 1.7
+2018-08-22
+Revision: 1.8
 
 <!-- markdownlint-disable MD022 MD033 -->
 
@@ -27,6 +27,7 @@ Revision: 1.7
   - [Available: `available`](#available-available)
   - [Unavailable: `unavailable`](#unavailable-unavailable)
   - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
+  - [Reserved: `reserved`](#reserved-reserved)
 - [Service `/domain/is_available`](#service-domainis_available)
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
@@ -68,6 +69,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.8 2018-08-22
+  - Added information on status `reserved`
 
 - 1.7 2017-12-19
   - Removed information on status `blocked`, which has been deprecated
@@ -208,6 +212,11 @@ A given domain name is in use and is not available for application.
 ### Available for designated user from waiting list: `available-on-waiting-list`
 
 A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to this offer.
+
+<a id="reserved-reserved"></a>
+### Reserved: `reserved`
+
+If an application has been enqueued with DK Hostmaster, but not processed. This can last a few seconds to a few days if the application require accept of agreement from the designated registrant
 
 <a id="service-domainis_available"></a>
 ## Service `/domain/is_available`
