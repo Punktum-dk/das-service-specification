@@ -31,8 +31,8 @@ Revision: 1.7
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
   - [Examples for available domain](#examples-for-available-domain)
-- [Example with bad domain parameter](#example-with-bad-domain-parameter)
-- [Example with bad credentials](#example-with-bad-credentials)
+  - [Example with bad domain parameter](#example-with-bad-domain-parameter)
+  - [Example with bad credentials](#example-with-bad-credentials)
 - [Test Data](#test-data)
   - [Domains](#domains)
   - [Accounts / Credentials](#accounts--credentials)
@@ -315,7 +315,7 @@ domain_status:available
 ```
 
 <a id="example-with-bad-domain-parameter"></a>
-## Example with bad domain parameter
+### Example with bad domain parameter
 
 Please note the -v flag to curl and that the response has been stripped down.
 
@@ -339,7 +339,7 @@ http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 <a id="example-with-bad-credentials"></a>
-## Example with bad credentials
+### Example with bad credentials
 
 Please note the -v flag to `curl` and that the response has been stripped down.
 
