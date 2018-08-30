@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2017-12-19
-Revision: 1.7
+2018-08-22
+Revision: 1.8
 
 <!-- markdownlint-disable MD022 MD033 -->
 
@@ -27,6 +27,7 @@ Revision: 1.7
   - [Available: `available`](#available-available)
   - [Unavailable: `unavailable`](#unavailable-unavailable)
   - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
+  - [Enqueued: `enqueued`](#enqueued-enqueued)
 - [Service `/domain/is_available`](#service-domainis_available)
   - [Request](#request)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
@@ -69,6 +70,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
+- 1.8 2018-08-22
+  - Added information on status `enqueued`, introduced with server version 1.4.0
+
 - 1.7 2017-12-19
   - Removed information on status `blocked`, which has been deprecated
 
@@ -93,7 +97,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
   - Migrated to markdown and hosting on Github, no changes to actual content just formatting
 
 - 1.0 2013-02-25
-  . Initial revision
+  - Initial revision
 
 <a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
@@ -209,6 +213,11 @@ A given domain name is in use and is not available for application.
 
 A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to this offer.
 
+<a id="enqueued-enqueued"></a>
+### Enqueued: `enqueued`
+
+If an application has been enqueued with DK Hostmaster, but not processed. This can last a few seconds to a few days if the application require accept of agreement from the designated registrant
+
 <a id="service-domainis_available"></a>
 ## Service `/domain/is_available`
 
@@ -253,8 +262,8 @@ https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-ho
 ```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
-  <domain>dk-hostmaster.dk</domain>
-  <domain_status>unavailable</domain_status>
+    <domain>dk-hostmaster.dk</domain>
+    <domain_status>unavailable</domain_status>
 </response>
 ```
 
@@ -295,9 +304,9 @@ https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.
 ```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
-  <domain>adsf.dk</domain>
-  <domain_status>available</domain_status>
-  <status>ok</status>
+    <domain>adsf.dk</domain>
+    <domain_status>available</domain_status>
+    <status>ok</status>
 </response>
 ```
 
