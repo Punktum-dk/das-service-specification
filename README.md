@@ -71,7 +71,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ### Document History
 
 - 1.8 2018-08-22
-  - Added information on status `enqueued`
+  - Added information on status `enqueued`, introduced with server version 1.4.0
 
 - 1.7 2017-12-19
   - Removed information on status `blocked`, which has been deprecated
