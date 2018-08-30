@@ -71,33 +71,33 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ### Document History
 
 - 1.8 2018-08-22
-	- Added information on status `enqueued`
+  - Added information on status `enqueued`
 
 - 1.7 2017-12-19
-	- Removed information on status `blocked`, which has been deprecated
+  - Removed information on status `blocked`, which has been deprecated
 
 - 1.6 2016-10-18
-	- Added information on new status `available-on-waiting-list`
+  - Added information on new status `available-on-waiting-list`
 
 - 1.5 2016-09-01
-	- Minor clarification on credentials
+  - Minor clarification on credentials
 
 - 1.4 2016-06-09
-	- Removed obsolete datasheet
+  - Removed obsolete datasheet
 
 - 1.3 2016-06-09
-	- Added link to demo client, also available on Github  
+  - Added link to demo client, also available on Github  
 
 - 1.2 2016-04-19
-	- Filled in data in the datasheet, more information will follow
-	- Filled in details on blocking policy for failed login attempts based on user-id and IP-address
-	- Added link to the gitprint service
+  - Filled in data in the datasheet, more information will follow
+  - Filled in details on blocking policy for failed login attempts based on user-id and IP-address
+  - Added link to the gitprint service
 
 - 1.1 2015-09-02
-	- Migrated to markdown and hosting on Github, no changes to actual content just formatting
+  - Migrated to markdown and hosting on Github, no changes to actual content just formatting
 
 - 1.0 2013-02-25
-	. Initial revision
+  - Initial revision
 
 <a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
@@ -225,10 +225,10 @@ If an application has been enqueued with DK Hostmaster, but not processed. This 
 ### Request
 
 Method:
-		`GET`
+    `GET`
 
 URL path:
-		`/domain/is_available/<domain>`
+    `/domain/is_available/<domain>`
 
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
@@ -262,8 +262,8 @@ https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-ho
 ```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
-	<domain>dk-hostmaster.dk</domain>
-	<domain_status>unavailable</domain_status>
+    <domain>dk-hostmaster.dk</domain>
+    <domain_status>unavailable</domain_status>
 </response>
 ```
 
@@ -304,9 +304,9 @@ https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.
 ```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
-	<domain>adsf.dk</domain>
-	<domain_status>available</domain_status>
-	<status>ok</status>
+    <domain>adsf.dk</domain>
+    <domain_status>available</domain_status>
+    <status>ok</status>
 </response>
 ```
 
