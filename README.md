@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2018-08-22
-Revision: 1.8
+2018-10-26
+Revision: 1.9
 
 <!-- markdownlint-disable MD022 MD033 -->
 
@@ -70,6 +70,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="document-history"></a>
 ### Document History
 
+- 1.9 2018-10-26
+  - Clarified the endpoint URLs
+
 - 1.8 2018-08-22
   - Added information on status `enqueued`, introduced with server version 1.4.0
 
@@ -86,7 +89,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
   - Removed obsolete datasheet
 
 - 1.3 2016-06-09
-  - Added link to demo client, also available on Github  
+  - Added link to demo client, also available on Github
 
 - 1.2 2016-04-19
   - Filled in data in the datasheet, more information will follow
@@ -132,12 +135,16 @@ DK Hostmaster offers the following environments:
 - is_available requests made to this environment will reflect live production data
 - production credentials and proper authorization are needed to access the service
 
+Production is available at: `https://das.dk-hostmaster.dk/`
+
 <a id="sandbox-environment"></a>
 ### Sandbox Environment
 
 - is_available requests made to this environment will reflect dummy data
 - Please see the section on test data
 - The sandbox does not implement actual rate limiting, but offers simulated rate limiting by using a specific request, please see the section on test data
+
+Sandbox is available at: `https://das-sandbox.dk-hostmaster.dk/`
 
 <a id="implementation-limitations"></a>
 ## Implementation Limitations
@@ -190,7 +197,7 @@ The service uses a basic session handling based on cookies.
 | Parameter | Value | Description |
 |-----------|-------|-------------|
 | cookie name | dkhm-das-session | This is the name of the cookie |
-| cookie domain | .dk-hostmaster.dk |  
+| cookie domain | .dk-hostmaster.dk |
 | expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
 
 <a id="domain-status"></a>
