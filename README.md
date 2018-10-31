@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2018-10-26
-Revision: 1.9
+2018-10-31
+Revision: 1.10
 
 <!-- markdownlint-disable MD022 MD033 -->
 
@@ -69,6 +69,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.10 2018-10-31
+  - Updated the [Test Data](#test-data) section. Example data for the deprecated `blocked` removed and `enqueded` added
 
 - 1.9 2018-10-26
   - Clarified the endpoint URLs
