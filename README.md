@@ -3,8 +3,6 @@
 2018-10-31
 Revision: 1.10
 
-<!-- markdownlint-disable MD022 MD033 -->
-
 ## Table of Contents
 
 <!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " -->
