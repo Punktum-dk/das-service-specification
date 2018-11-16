@@ -90,13 +90,13 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
   - Minor clarification on credentials
 
 - 1.4 2016-06-09
-  - Removed obsolete datasheet
+  - Removed obsolete data sheet
 
 - 1.3 2016-06-09
   - Added link to demo client, also available on Github
 
 - 1.2 2016-04-19
-  - Filled in data in the datasheet, more information will follow
+  - Filled in data in the data sheet, more information will follow
   - Filled in details on blocking policy for failed login attempts based on user-id and IP-address
   - Added link to the gitprint service
 
@@ -157,7 +157,7 @@ In general the service is not localized and all DAS related errors and messages 
 
 The only localization support provided by the service is the support for IDN domains. Please note the service require requests in UTF-8, meaning punycode encoded domain names will be interpreted as-is, meaning in ASCII context.
 
-The punycode encoded example of: xn--kdplg-orai3l.dk will be evaluated as xn--kdplg-orai3l.dk and not decoded to kødpålæg.dk prior to evaluation.
+The punycode encoded example of: `xn--kdplg-orai3l.dk` will be evaluated as `xn--kdplg-orai3l.dk` and not decoded to kødpålæg.dk prior to evaluation.
 
 <a id="aaa"></a>
 ### AAA
@@ -245,7 +245,7 @@ URL path:
 |-----------|------|-------------|-----------|---------|
 | domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
 | status | enumerated string | string indicating the status of the request, either one of: `available`, `unavailable`, `blocked` or `available-on-waiting-list` | yes | |
-| message | enumerated string | string providing a human-readable message, “ok” on success | optional |
+| message | enumerated string | string providing a human-readable message, “OK” on success | optional |
 
 Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
 
@@ -342,7 +342,7 @@ domain_status:available
 <a id="example-with-bad-domain-parameter"></a>
 ### Example with bad domain parameter
 
-Please note the `-v` flag to `curl`
+Please note the `-v` flag to `curl` and that the response has been stripped down.
 
 Text:
 
@@ -352,60 +352,9 @@ https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```Text
-> https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
-*   Trying 2a01:630:0:21::80...
-* TCP_NODELAY set
-* Connected to das-sandbox.dk-hostmaster.dk (2a01:630:0:21::80) port 443 (#0)
-* ALPN, offering h2
-* ALPN, offering http/1.1
-* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
-* successfully set certificate verify locations:
-*   CAfile: /etc/ssl/cert.pem
-  CApath: none
-* TLSv1.2 (OUT), TLS handshake, Client hello (1):
-* TLSv1.2 (IN), TLS handshake, Server hello (2):
-* TLSv1.2 (IN), TLS handshake, Certificate (11):
-* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
-* TLSv1.2 (IN), TLS handshake, Server finished (14):
-* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
-* TLSv1.2 (OUT), TLS change cipher, Client hello (1):
-* TLSv1.2 (OUT), TLS handshake, Finished (20):
-* TLSv1.2 (IN), TLS change cipher, Client hello (1):
-* TLSv1.2 (IN), TLS handshake, Finished (20):
-* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
-* ALPN, server accepted to use h2
-* Server certificate:
-*  subject: CN=das-sandbox.dk-hostmaster.dk
-*  start date: Oct  1 07:00:11 2018 GMT
-*  expire date: Dec 30 07:00:11 2018 GMT
-*  subjectAltName: host "das-sandbox.dk-hostmaster.dk" matched cert's "das-sandbox.dk-hostmaster.dk"
-*  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
-*  SSL certificate verify ok.
-* Using HTTP2, server supports multi-use
-* Connection state changed (HTTP/2 confirmed)
-* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
-* Server auth using Basic with user 'REG-999999'
-* Using Stream ID: 1 (easy handle 0x7fa06b800400)
-> GET /domain/is_available/asdf HTTP/2
-> Host: das-sandbox.dk-hostmaster.dk
-> Authorization: Basic UkVHLTk5OTk5OTpzZWNyZXQ=
-> User-Agent: curl/7.54.0
-> Accept:text/plain
->
-* Connection state changed (MAX_CONCURRENT_STREAMS updated)!
-< HTTP/2 400
-< server: nginx
-< date: Fri, 16 Nov 2018 07:40:08 GMT
-< content-type: text/plain; charset=utf-8;
-< content-length: 53
-< cache-control: max-age=1, no-cache
-< set-cookie: dkhm-das-session=eyJhdXRoZW50aWNhdGVkIjoxLCJleHBpcmVzIjoxNTQyMzU3NjA4fQ----361a243d16f39603a7d3d95450769e91542dc797; expires=Fri, 16 Nov 2018 08:40:08 GMT; path=/; HttpOnly
-< strict-transport-security: max-age=15768000
-<
 domain:asdf
 status:400
 message:Invalid domain syntax
-* Connection #0 to host das-sandbox.dk-hostmaster.dk left intact
 ```
 
 <a id="example-with-bad-credentials"></a>
