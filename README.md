@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2018-10-31
-Revision: 1.10
+2018-11-16
+Revision: 1.11
 
 ## Table of Contents
 
@@ -67,6 +67,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.11 2018-11-16
+  - Corrected the examples so these are directly executable
 
 - 1.10 2018-10-31
   - Updated the [Test Data](#test-data) section. Example data for the deprecated `blocked` removed and `enqueded` added
@@ -253,25 +256,27 @@ JSON:
 
 ```Shell
 % curl --header Accept:application/json \
-https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```JSON
-{"domain":"dk-hostmaster.dk","status":"ok","domain_status":"unavailable"}
+{"domain":"dk-hostmaster.dk","domain_status":"unavailable","message":"OK","status":200}
 ```
 
 XML:
 
 ```Shell
 % curl --header Accept:application/xml \
-https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
-    <domain>dk-hostmaster.dk</domain>
-    <domain_status>unavailable</domain_status>
+  <domain>dk-hostmaster.dk</domain>
+  <domain_status>unavailable</domain_status>
+  <message>OK</message>
+  <status>200</status>
 </response>
 ```
 
@@ -279,13 +284,14 @@ Text:
 
 ```Shell
 % curl --header Accept:text/plain \
-http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
 ```
 
 ```Text
-domain:dk-hostmaster.dk
-status:ok
 domain_status:unavailable
+status:200
+message:OK
+domain:dk-hostmaster.dk
 ```
 
 <a id="examples-for-available-domain"></a>
@@ -295,26 +301,27 @@ JSON:
 
 ```bash
 % curl --header Accept:application/json \
-https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
 ```
 
 ```JSON
-{"domain":"adsf.dk","status":"ok","domain_status":"available"}
+{"domain":"adsf.dk","domain_status":"available","message":"OK","status":200}
 ```
 
 XML:
 
 ```Shell
 % curl --header Accept:application/xml \
-https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```XML
 <?xml version='1.0' encoding='UTF-8' standalone='yes'?>
 <response>
-    <domain>adsf.dk</domain>
-    <domain_status>available</domain_status>
-    <status>ok</status>
+  <domain>asdf.dk</domain>
+  <domain_status>available</domain_status>
+  <message>OK</message>
+  <status>200</status>
 </response>
 ```
 
@@ -322,63 +329,100 @@ Text:
 
 ```Shell
 % curl --header Accept:text/plain \
-http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```Text
-domain:adsf.dk
-status:ok
+domain:asdf.dk
+message:OK
+status:200
 domain_status:available
 ```
 
 <a id="example-with-bad-domain-parameter"></a>
 ### Example with bad domain parameter
 
-Please note the -v flag to curl and that the response has been stripped down.
+Please note the `-v` flag to `curl`
 
 Text:
 
 ```Shell
 % curl -v --header Accept:text/plain \
-http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```Text
-< HTTP/1.1 415 Unsupported Media Type
-< Connection: keep-alive
-< Content-Type: application/json; charset=utf-8;
-< Cache-Control: max-age=1, no-cache
-< Date: Wed, 23 Oct 2013 11:59:30 GMT
-< Content-Length: 24
-< Server: Mojolicious (Perl)
+> https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+*   Trying 2a01:630:0:21::80...
+* TCP_NODELAY set
+* Connected to das-sandbox.dk-hostmaster.dk (2a01:630:0:21::80) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /etc/ssl/cert.pem
+  CApath: none
+* TLSv1.2 (OUT), TLS handshake, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Server hello (2):
+* TLSv1.2 (IN), TLS handshake, Certificate (11):
+* TLSv1.2 (IN), TLS handshake, Server key exchange (12):
+* TLSv1.2 (IN), TLS handshake, Server finished (14):
+* TLSv1.2 (OUT), TLS handshake, Client key exchange (16):
+* TLSv1.2 (OUT), TLS change cipher, Client hello (1):
+* TLSv1.2 (OUT), TLS handshake, Finished (20):
+* TLSv1.2 (IN), TLS change cipher, Client hello (1):
+* TLSv1.2 (IN), TLS handshake, Finished (20):
+* SSL connection using TLSv1.2 / ECDHE-RSA-AES256-GCM-SHA384
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: CN=das-sandbox.dk-hostmaster.dk
+*  start date: Oct  1 07:00:11 2018 GMT
+*  expire date: Dec 30 07:00:11 2018 GMT
+*  subjectAltName: host "das-sandbox.dk-hostmaster.dk" matched cert's "das-sandbox.dk-hostmaster.dk"
+*  issuer: C=US; O=Let's Encrypt; CN=Let's Encrypt Authority X3
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Server auth using Basic with user 'REG-999999'
+* Using Stream ID: 1 (easy handle 0x7fa06b800400)
+> GET /domain/is_available/asdf HTTP/2
+> Host: das-sandbox.dk-hostmaster.dk
+> Authorization: Basic UkVHLTk5OTk5OTpzZWNyZXQ=
+> User-Agent: curl/7.54.0
+> Accept:text/plain
+>
+* Connection state changed (MAX_CONCURRENT_STREAMS updated)!
+< HTTP/2 400
+< server: nginx
+< date: Fri, 16 Nov 2018 07:40:08 GMT
+< content-type: text/plain; charset=utf-8;
+< content-length: 53
+< cache-control: max-age=1, no-cache
+< set-cookie: dkhm-das-session=eyJhdXRoZW50aWNhdGVkIjoxLCJleHBpcmVzIjoxNTQyMzU3NjA4fQ----361a243d16f39603a7d3d95450769e91542dc797; expires=Fri, 16 Nov 2018 08:40:08 GMT; path=/; HttpOnly
+< strict-transport-security: max-age=15768000
 <
-"Unsupported media type"
+domain:asdf
+status:400
+message:Invalid domain syntax
+* Connection #0 to host das-sandbox.dk-hostmaster.dk left intact
 ```
 
 <a id="example-with-bad-credentials"></a>
 ### Example with bad credentials
 
-Please note the -v flag to `curl` and that the response has been stripped down.
+Please note the `-v` flag to `curl` and that the response has been stripped down.
 
 Text:
 
 ```Shell
 % curl -v --header Accept:text/plain \
-http://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```Text
-< HTTP/1.1 401 Unauthorized
-< Connection: keep-alive
-< Content-Type: application/json; charset=utf-8;
-< Cache-Control: max-age=1, no-cache
-< Date: Wed, 23 Oct 2013 12:05:22 GMT
-* Authentication problem. Ignoring this.
-< WWW-Authenticate: Basic realm=DKH Domain Availability Service (DAS)
-< Content-Length: 56
-< Server: Mojolicious (Perl)
-status:error
-message:User authentication error
+message:Forbidden
+status:403
 ```
 
 <a id="test-data"></a>
