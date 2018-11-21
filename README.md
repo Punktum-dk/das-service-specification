@@ -386,7 +386,7 @@ The sandbox uses a predefined set of test data. All domains not listed in the be
 |-------------|--------|-------|
 | dk-hostmaster.dk | `unavailable` | The domain is active |
 | waiting-list.dk | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
-| blocked.dk | `blocked` | The domain status is blocked |
+| enqueued.dk | `enqueued` | The domain application status is enqueued |
 | æøåöäüé.dk | `unavailable` | This domain is active |
 | * | `available` | Everything not listed above will be reported as `available` |
 
@@ -397,7 +397,7 @@ The sandbox uses a predefined set of test data. All domains not listed in the be
 |------------|----------|--------|-------|
 | REG-999999 | secret | Active | The user is active and can be used to access the service |
 | TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
-| REG-123456 | secret | Active | The users' password is temporary and cannot be used to access service. |
+| REG-123456 | secret | Active | The users' password is temporary and cannot be used to access service |
 
 <a id="references"></a>
 ## References
