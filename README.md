@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2018-11-16
-Revision: 1.11
+2018-11-21
+Revision: 1.12
 
 ## Table of Contents
 
@@ -67,6 +67,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.12 2018-11-21
+  - Minor correction to the [Test Data](#test-data) section
 
 - 1.11 2018-11-16
   - Corrected the examples so these are directly executable
