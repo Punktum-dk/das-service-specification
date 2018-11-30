@@ -1,7 +1,7 @@
 # DK Hostmaster Domain Availability Service Specification
 
-2018-11-22
-Revision: 1.13
+2018-11-30
+Revision: 1.14
 
 ## Table of Contents
 
@@ -60,6 +60,8 @@ Any future extensions and possible additions and changes to the implementation a
 
 A printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
 
+Do note that all the examples are constructed and the access credentials are examples and are non-functional.
+
 <a id="license"></a>
 ### License
 
@@ -67,6 +69,10 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.14 2018-11-30
+  - Sandbox accounts and credentials are no longer supported and has been removed
+  - Information on the consolidated sandbox environment has been added
 
 - 1.13 2018-11-22
   - Minor correction to listing of enumerated values for responses
@@ -150,9 +156,8 @@ Production is available at: `https://das.dk-hostmaster.dk/`
 <a id="sandbox-environment"></a>
 ### Sandbox Environment
 
-- is_available requests made to this environment will reflect dummy data
+- is_available requests made to this environment will reflect data only available in the isolated [sandbox environment], please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
 - Please see the section on test data
-- The sandbox does not implement actual rate limiting, but offers simulated rate limiting by using a specific request, please see the section on test data
 
 Sandbox is available at: `https://das-sandbox.dk-hostmaster.dk/`
 
@@ -394,16 +399,12 @@ The sandbox uses a predefined set of test data. All domains not listed in the be
 | waiting-list.dk | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
 | enqueued.dk | `enqueued` | The domain application status is enqueued |
 | æøåöäüé.dk | `unavailable` | This domain is active |
-| * | `available` | Everything not listed above will be reported as `available` |
+| * | * | Depending on what domains has been registered with the sandbox environment (see states above), if not registered `available` will be returned. Please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details. |
 
 <a id="accounts--credentials"></a>
 ### Accounts / Credentials
 
-| Username   | Password | Status | Notes |
-|------------|----------|--------|-------|
-| REG-999999 | secret | Active | The user is active and can be used to access the service |
-| TEST1-DK   | secret | Active | Not authorized, the user does not have registrator status |
-| REG-123456 | secret | Active | The users' password is temporary and cannot be used to access service |
+To use the DAS sandbox you have to use your own account, please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
 
 <a id="references"></a>
 ## References
@@ -418,7 +419,7 @@ Here is a list of documents and references used in this document
 <a id="resources"></a>
 ## Resources
 
-Resources for DK Hostmaster DAS support is listed below.
+Resources for DK Hostmaster DAS support are listed below.
 
 <a id="mailing-list"></a>
 ## Mailing list
