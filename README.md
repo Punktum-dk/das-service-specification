@@ -5,6 +5,8 @@
 2018-11-30
 Revision: 1.14
 
+[![Build Status](https://travis-ci.org/DK-Hostmaster/das-service-specification.svg?branch=master)](https://travis-ci.org/DK-Hostmaster/das-service-specification)
+
 ## Table of Contents
 
 <!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " -->
