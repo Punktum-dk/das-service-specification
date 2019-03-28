@@ -2,8 +2,8 @@
 
 # DK Hostmaster Domain Availability Service Specification
 
-2018-11-30
-Revision: 1.14
+2019-03-28
+Revision: 1.15
 
 [![Build Status](https://travis-ci.org/DK-Hostmaster/das-service-specification.svg?branch=master)](https://travis-ci.org/DK-Hostmaster/das-service-specification)
 
@@ -73,6 +73,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 1.15 2019-03-28
+  - Added information on IP address whitelisting to section on [nvironments](#available-environments)
 
 - 1.14 2018-11-30
   - Sandbox accounts and credentials are no longer supported and has been removed
@@ -148,6 +151,8 @@ DK Hostmaster offers the following environments:
 | ----------- | ---- | ----------- |
 | production  | production | This environment will be the production environment for the DK Hostmaster Domain Availability Service |
 | sandbox     | development | This environment is intended for client development towards the DK Hostmaster Domain Availability Service. |
+
+Do note that accessing the service does not require IP address whitelisting with DK Hostmaster prior to use.
 
 <a id="production-environment"></a>
 ### Production Environment
