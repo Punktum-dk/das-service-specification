@@ -9,7 +9,7 @@ Revision: 1.15
 
 ## Table of Contents
 
-<!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " -->
+<!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " autolink="true" autoanchor="true" -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
