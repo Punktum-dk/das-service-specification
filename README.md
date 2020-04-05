@@ -77,7 +77,8 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 ### Document History
 
 - 1.15 2019-03-28
-  - Added information on IP address whitelisting to section onAdded information on IP address whitelisting to section on [Environments](#available-environments)
+  - Added information on IP address whitelisting to section on
+  - Added information on IP address whitelisting to section on [Environments](#available-environments)
 
 - 1.14 2018-11-30
   - Sandbox accounts and credentials are no longer supported and has been removed
