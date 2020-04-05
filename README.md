@@ -115,7 +115,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
   - Removed obsolete data sheet
 
 - 1.3 2016-06-09
-  - Added link to demo client, also available on Github
+  - Added link to demo client, also available on GitHub
 
 - 1.2 2016-04-19
   - Filled in data in the data sheet, more information will follow
@@ -123,7 +123,7 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
   - Added link to the gitprint service
 
 - 1.1 2015-09-02
-  - Migrated to markdown and hosting on Github, no changes to actual content just formatting
+  - Migrated to markdown and hosting on GitHub, no changes to actual content just formatting
 
 - 1.0 2013-02-25
   - Initial revision
@@ -324,11 +324,11 @@ JSON:
 
 ```bash
 % curl --header Accept:application/json \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/adsf.dk
+https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
 ```
 
 ```JSON
-{"domain":"adsf.dk","domain_status":"available","message":"OK","status":200}
+{"domain":"asdf.dk","domain_status":"available","message":"OK","status":200}
 ```
 
 XML:
