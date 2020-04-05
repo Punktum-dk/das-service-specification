@@ -2,13 +2,11 @@
 
 # DK Hostmaster Domain Availability Service Specification
 
-![GitHub Workflow build status badge markdownlint](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Workflow/badge.svg)
+![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
+![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 2019-03-28
 Revision: 1.15
-
-![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
-![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 ## Table of Contents
 
