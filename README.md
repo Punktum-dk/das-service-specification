@@ -7,7 +7,8 @@
 2019-03-28
 Revision: 1.15
 
-[![Build Status](https://travis-ci.org/DK-Hostmaster/das-service-specification.svg?branch=master)](https://travis-ci.org/DK-Hostmaster/das-service-specification)
+![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
+![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 ## Table of Contents
 
