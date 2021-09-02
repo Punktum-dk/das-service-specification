@@ -6,7 +6,7 @@
 ![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 2021-09-02
-Revision: 2.0
+Revision: 2.1
 
 ## Table of Contents
 
@@ -74,6 +74,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 2.1 2021-09-02
+  - Updated support information
 
 - 2.0 2021-09-02
   - Service updated to version 2.0.0, specification following service, no protocol changes only implementation changes
