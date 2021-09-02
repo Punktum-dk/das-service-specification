@@ -5,8 +5,8 @@
 ![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2019-03-28
-Revision: 1.15
+2021-09-02
+Revision: 2.0
 
 ## Table of Contents
 
@@ -59,7 +59,7 @@ This document describes and specifies the implementation offered by DK Hostmaste
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 1 (1.0.x) of the DK Hostmaster DAS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
+This specification describes version 1 (1.X.X) and 2 (2.X.X) of the DK Hostmaster DAS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
 The document describes the current DK Hostmaster DAS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
@@ -74,6 +74,9 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 
 <a id="document-history"></a>
 ### Document History
+
+- 2.0 2021-09-02
+  - Service updated to version 2.0.0, specification following service, no protocol changes only implementation changes
 
 - 1.15 2019-03-28
   - Added information on IP address whitelisting to section on
