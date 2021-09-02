@@ -445,9 +445,7 @@ DK Hostmaster operates a mailing list for discussion and inquiries about the DK 
 <a id="issue-reporting"></a>
 ## Issue Reporting
 
-For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise, use the address specified below:
-
-- `info@dk-hostmaster.dk`
+For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise, use the regular support channels.
 
 <a id="additional-information"></a>
 ## Additional Information
