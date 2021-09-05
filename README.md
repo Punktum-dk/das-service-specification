@@ -10,7 +10,7 @@ Revision: 2.1
 
 ## Table of Contents
 
-<!-- MarkdownTOC bracket=round levels="1,2,3, 4" indent="  " autolink="true" autoanchor="true" -->
+<!-- MarkdownTOC bracket=round levels="1,2,3,4" indent="  " autolink="true" autoanchor="true" -->
 
 - [Introduction](#introduction)
 - [About this Document](#about-this-document)
@@ -174,7 +174,7 @@ Production is available at: `https://das.dk-hostmaster.dk/`
 ### Sandbox Environment
 
 - is_available requests made to this environment will reflect data only available in the isolated [sandbox environment], please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
-- Please see the section on test data
+- Please see the section on [Test Data](#test-data).
 
 Sandbox is available at: `https://das-sandbox.dk-hostmaster.dk/`
 
@@ -412,10 +412,10 @@ The sandbox uses a predefined set of test data. All domains not listed in the be
 
 | Domain name | Status | Notes |
 |-------------|--------|-------|
-| dk-hostmaster.dk | `unavailable` | The domain is active |
-| waiting-list.dk | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
-| enqueued.dk | `enqueued` | The domain application status is enqueued |
-| æøåöäüé.dk | `unavailable` | This domain is active |
+| `dk-hostmaster.dk` | `unavailable` | The domain is active |
+| `waiting-list.dk` | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
+| `enqueued.dk` | `enqueued` | The domain application status is enqueued |
+| `æøåöäüé.dk` | `unavailable` | This domain is active |
 | * | * | Depending on what domains has been registered with the sandbox environment (see states above), if not registered `available` will be returned. Please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details. |
 
 <a id="accounts--credentials"></a>
