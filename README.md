@@ -429,9 +429,9 @@ To use the DAS sandbox you have to use your own account, please see the [sandbox
 Here is a list of documents and references used in this document
 
 - [General Terms and Conditions][general_terms_and_conditions]
-- [RFC: 2616 Hypertext Transfer Protocol -- HTTP/1.1][rfc2616]
-- [RFC: 2617 HTTP Authentication: Basic and Digest Access Authentication][rfc2617]
-- [Documentation on the format of a domain name with the DK Hostmaster A/S registry][domain_name_format]
+- [RFC: 2616 Hypertext Transfer Protocol -- HTTP/1.1][RFC:2616]
+- [RFC: 2617 HTTP Authentication: Basic and Digest Access Authentication][RFC:2617]
+- [Documentation on the format of a domain name with the DK Hostmaster A/S registry][DKHMNSDOM]
 
 <a id="resources"></a>
 ## Resources
@@ -448,7 +448,7 @@ DK Hostmaster operates a mailing list for discussion and inquiries about the DK 
 <a id="issue-reporting"></a>
 ## Issue Reporting
 
-For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us.  You are of course welcome to post these to the mailing list mentioned above, otherwise, use the regular support channels.
+For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us. You are of course welcome to post these to the mailing list mentioned above, otherwise, use the regular support channels.
 
 <a id="additional-information"></a>
 ## Additional Information
@@ -480,10 +480,14 @@ A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is
 | 500 | Server Error | Service malfunction |
 | 503 | Service Unavailable | Maintenance mode |
 
+Please see the [Wikipedia; List of HTTP status codes][WIKIPEDIA].
+
 [general_terms_and_conditions]: https://www.dk-hostmaster.dk/en/general-conditions
 
-[domain_name_format]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
+[DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
 
-[rfc2617]: http://tools.ietf.org/html/rfc2617
+[RFC:2617]: http://tools.ietf.org/html/rfc2617
 
-[rfc2616]: https://tools.ietf.org/html/rfc2616
+[RFC:2616]: https://tools.ietf.org/html/rfc2616
+
+[WIKIPEDIA]: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
