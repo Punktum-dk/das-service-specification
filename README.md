@@ -1,6 +1,6 @@
-![DK Hostmaster Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
+![Punktum dk Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
 
-# DK Hostmaster Domain Availability Service Specification
+# Punktum dk Domain Availability Service Specification
 
 ![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
@@ -54,13 +54,13 @@ Revision: 2.1
 <a id="introduction"></a>
 ## Introduction
 
-This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the Domain Availability Service (DAS). It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of HTTP and possibly DNS registration.
+This document describes and specifies the implementation offered by Punktum dk A/S for interaction with the central registry for the ccTLD dk using the Domain Availability Service (DAS). It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of HTTP and possibly DNS registration.
 
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 1 (1.X.X) and 2 (2.X.X) of the DK Hostmaster DAS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
-The document describes the current DK Hostmaster DAS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
+This specification describes version 1 (1.X.X) and 2 (2.X.X) of the Punktum dk DAS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
+The document describes the current Punktum dk DAS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
 A printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
@@ -70,7 +70,7 @@ Do note that all the examples are constructed and the access credentials are exa
 <a id="license"></a>
 ### License
 
-This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
+This document is copyright by Punktum dk A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
 
 <a id="document-history"></a>
 ### Document History
@@ -136,31 +136,31 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
 
-DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
+Punktum dk is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with Punktum dk maintaining the central DNS registry.
 The service is not subject to any sorts of standards but adheres to best practices in the implementation of REST and use of HTTP in context of REST.
 
 <a id="domain-availability-service"></a>
 ## Domain Availability Service
 
-The DK Hostmaster’s DAS is based on a SOA architecture. The implementation is regarded as a service offered to external parties requiring inquiry actions towards the DK Hostmaster registry.
+The Punktum dk’s DAS is based on a SOA architecture. The implementation is regarded as a service offered to external parties requiring inquiry actions towards the Punktum dk registry.
 
-DAS is an HTTP-based protocol aimed at providing a speedy interface for requesting information from the DK Hostmaster registry. The service is intended for machine-to-machine communication in a client-server setup. Please see the References chapter for more information on specifications and references for HTTP and related.
+DAS is an HTTP-based protocol aimed at providing a speedy interface for requesting information from the Punktum dk registry. The service is intended for machine-to-machine communication in a client-server setup. Please see the References chapter for more information on specifications and references for HTTP and related.
 
 The service requires the use and possible development of client software. This is beyond the scope of this specification as the API and other assets for assisting in this are the primary object of this document.
 
-In addition to the assets, DK Hostmaster aims to assist users and developers of possible client software with integration towards DK Hostmaster and therefore provide facilities to ease this integration. This is primarily centered around a sandbox environment and related documentation.
+In addition to the assets, Punktum dk aims to assist users and developers of possible client software with integration towards Punktum dk and therefore provide facilities to ease this integration. This is primarily centered around a sandbox environment and related documentation.
 
 <a id="available-environments"></a>
 ## Available Environments
 
-DK Hostmaster offers the following environments:
+Punktum dk offers the following environments:
 
 | Environment | Role | Policies |
 | ----------- | ---- | ----------- |
-| production  | production | This environment will be the production environment for the DK Hostmaster Domain Availability Service |
-| sandbox     | development | This environment is intended for client development towards the DK Hostmaster Domain Availability Service. |
+| production  | production | This environment will be the production environment for the Punktum dk Domain Availability Service |
+| sandbox     | development | This environment is intended for client development towards the Punktum dk Domain Availability Service. |
 
-Do note that accessing the service does not require IP address whitelisting with DK Hostmaster prior to use.
+Do note that accessing the service does not require IP address whitelisting with Punktum dk prior to use.
 
 <a id="production-environment"></a>
 ### Production Environment
@@ -255,7 +255,7 @@ A given domain name has been offered to the first entry on a waiting list and is
 <a id="enqueued-enqueued"></a>
 ### Enqueued: `enqueued`
 
-If an application has been enqueued with DK Hostmaster, but not processed. This can last a few seconds to a few days if the application require accept of agreement from the designated registrant
+If an application has been enqueued with Punktum dk, but not processed. This can last a few seconds to a few days if the application require accept of agreement from the designated registrant
 
 <a id="service-domainis_available"></a>
 ## Service `/domain/is_available`
@@ -271,7 +271,7 @@ URL path:
 
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
-| domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
+| domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by Punktum dk, see References. | yes | abc.dk, jordbærgrød.dk |
 | status | enumerated string | string indicating the status of the request, either one of: `available`, `unavailable`, `enqueued` or `available-on-waiting-list` | yes | |
 | message | enumerated string | string providing a human-readable message, “OK” on success | optional |
 
@@ -431,17 +431,17 @@ Here is a list of documents and references used in this document
 - [General Terms and Conditions][general_terms_and_conditions]
 - [RFC: 2616 Hypertext Transfer Protocol -- HTTP/1.1][RFC:2616]
 - [RFC: 2617 HTTP Authentication: Basic and Digest Access Authentication][RFC:2617]
-- [Documentation on the format of a domain name with the DK Hostmaster A/S registry][DKHMNSDOM]
+- [Documentation on the format of a domain name with the Punktum dk A/S registry][DKHMNSDOM]
 
 <a id="resources"></a>
 ## Resources
 
-Resources for DK Hostmaster DAS support are listed below.
+Resources for Punktum dk DAS support are listed below.
 
 <a id="mailing-list"></a>
 ## Mailing list
 
-DK Hostmaster operates a mailing list for discussion and inquiries about the DK Hostmaster DAS implementation. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
+Punktum dk operates a mailing list for discussion and inquiries about the Punktum dk DAS implementation. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within Punktum dk A/S.
 
 - `tech-discuss+subscribe@liste.dk-hostmaster.dk`
 
@@ -453,7 +453,7 @@ For issue reporting related to this specification, the DAS implementation or san
 <a id="additional-information"></a>
 ## Additional Information
 
-The DK Hostmaster website:
+The Punktum dk website:
 
 - `https://www.dk-hostmaster.dk/en/das`
 
