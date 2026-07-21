@@ -26,7 +26,7 @@ Revision: 2.2
   - [Supported Media Types](#supported-media-types)
   - [Rate Limiting](#rate-limiting)
 - [Domain Status](#domain-status)
-- [Service `/domain/is_available`](#service-domainis_available)
+- [Service /domain/is_available](#service-domainis_available)
   - [Request](#request)
   - [Response](#response)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
