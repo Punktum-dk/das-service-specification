@@ -212,13 +212,9 @@ If a supported format is not specified in the `Accept` header, the service respo
 <a id="rate-limiting"></a>
 ### Rate Limiting
 
-We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
+The service does not enforce a rate limit. You can query the service as often as your integration requires, in both the production and the sandbox environment.
 
-If the rate limit is exceeded, the HTTP status code 429 "Too many requests" is returned. The response includes a `Retry-After` header indicating how many seconds to wait before retrying.
-
-👉 The current limit is set to 60 requests per minute.
-
-Please note that the sandbox environment does not enforce rate limiting at this time, to allow unlimited use for developers.
+👉 Query volumes are expected to be proportional to actual business use. Punktum dk reserves the right to introduce a rate limit, or to suspend a DAS service user, if use of the service affects the overall quality of the service.
 
 <a id="domain-status"></a>
 ## Domain Status
@@ -428,7 +424,6 @@ For issue reporting related to this specification, the DAS implementation, or th
 | 403 | Forbidden | Not authorized |
 | 404 | Page not found | The request assumes a service (URL) not provided or unsupported at this time |
 | 415 | Unsupported Media Type | The requested media type is unsupported, see section on Media Types |
-| 429 | Too many attempts | Rate limiting triggered, please see section on Rate Limiting |
 | 500 | Server Error | Service malfunction |
 | 503 | Service Unavailable | Maintenance mode |
 
