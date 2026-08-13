@@ -68,11 +68,8 @@ This document is copyright by Punktum dk A/S and is licensed under the MIT Licen
 <a id="document-history"></a>
 ### Document History
 
-- 2.2 2026-07-21
+- 2.1.1 2026-07-21
   - Verified and corrected request/response examples against the production service
-  - Corrected the IDN/punycode behaviour: punycode-encoded names are rejected; submit UTF-8
-  - Removed session handling, demo client, mailing list and additional information sections
-  - Updated test data to reflect the current sandbox environment
   - General review and rewrite for clarity and consistency
 
 - 2.1 2021-09-02
@@ -182,9 +179,9 @@ Sandbox is available at: `https://das-sandbox.dk-hostmaster.dk/`
 
 In general the service is not localized and all DAS related errors and messages are provided in English.
 
-The only localization support provided by the service is the support for IDN (Internationalized Domain Name) domains. Domain names must be submitted in UTF-8 using their native characters, for example rødtråd.dk. The service evaluates and returns the domain name in this form.
+The only localization support provided by the service is the support for IDN (Internationalized Domain Name) domains. Domain names must be submitted in UTF-8 using their native characters, for example sikkerpånettet.dk. The service evaluates and returns the domain name in this form.
 
-Please note that punycode-encoded domain names (for example xn--rdtrd-pra3k.dk) are not accepted by the service and will be rejected with an HTTP 400 response. Submit the UTF-8 representation instead.
+Please note that punycode-encoded domain names (for example xn--sikkerpnettet-vfb.dk) are not accepted by the service and will be rejected with an HTTP 400 response. Submit the UTF-8 representation instead.
 
 <a id="authentication"></a>
 ### Authentication
@@ -240,7 +237,7 @@ URL path: `/domain/is_available/<domain>`
 
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
-| domain | string | The domain name to evaluate. It must adhere to the domain name format expected by Punktum dk, see [References][references]. | yes | `rødtråd.dk`, `example.dk` |
+| domain | string | The domain name to evaluate. It must adhere to the domain name format expected by Punktum dk, see [References][references]. | yes | `sikkerpånettet.dk`, `eksempel.dk` |
 
 <a id="response"></a>
 ### Response
@@ -263,23 +260,23 @@ JSON:
 
 ```Shell
 % curl --header Accept:application/json \
-https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/example.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/eksempel.dk
 ```
 
 ```JSON
-{"domain":"example.dk","domain_status":"unavailable","message":"OK","status":200}
+{"domain":"eksempel.dk","domain_status":"unavailable","message":"OK","status":200}
 ```
 
 XML:
 
 ```Shell
 % curl --header Accept:application/xml \
-https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/example.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/eksempel.dk
 ```
 
 ```XML
 <response xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
-  <domain>example.dk</domain>
+  <domain>eksempel.dk</domain>
   <domain_status>unavailable</domain_status>
   <message>OK</message>
   <status>200</status>
@@ -290,14 +287,14 @@ Text:
 
 ```Shell
 % curl --header Accept:text/plain \
-https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/example.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/eksempel.dk
 ```
 
 ```Text
 domain_status:unavailable
 status:200
 message:OK
-domain:example.dk
+domain:eksempel.dk
 ```
 
 <a id="examples-for-available-domain"></a>
