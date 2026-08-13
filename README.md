@@ -1,12 +1,12 @@
-![DK Hostmaster Logo](https://www.dk-hostmaster.dk/sites/default/files/dk-logo_0.png)
+![Punktum dk Logo](https://punktum.dk/sites/default/files/logo/dk_logo_symbol_1.png)
 
-# DK Hostmaster Domain Availability Service Specification
+# Punktum dk Domain Availability Service Specification
 
 ![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
 ![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
-2021-09-02
-Revision: 2.1
+2026-07-21
+Revision: 2.2
 
 ## Table of Contents
 
@@ -22,58 +22,55 @@ Revision: 2.1
   - [Production Environment](#production-environment)
   - [Sandbox Environment](#sandbox-environment)
 - [Implementation Limitations](#implementation-limitations)
-  - [AAA](#aaa)
-  - [Supported Media-types](#supported-media-types)
+  - [Authentication](#authentication)
+  - [Supported Media Types](#supported-media-types)
   - [Rate Limiting](#rate-limiting)
-  - [Session Handling](#session-handling)
 - [Domain Status](#domain-status)
-  - [Available: `available`](#available-available)
-  - [Unavailable: `unavailable`](#unavailable-unavailable)
-  - [Available for designated user from waiting list: `available-on-waiting-list`](#available-for-designated-user-from-waiting-list-available-on-waiting-list)
-  - [Enqueued: `enqueued`](#enqueued-enqueued)
-- [Service `/domain/is_available`](#service-domainis_available)
+- [Service /domain/is_available](#service-domainis_available)
   - [Request](#request)
+  - [Response](#response)
   - [Examples for unavailable domain](#examples-for-unavailable-domain)
   - [Examples for available domain](#examples-for-available-domain)
   - [Example with bad domain parameter](#example-with-bad-domain-parameter)
-  - [Example with bad credentials](#example-with-bad-credentials)
 - [Test Data](#test-data)
   - [Domains](#domains)
   - [Accounts / Credentials](#accounts--credentials)
 - [References](#references)
-- [Resources](#resources)
-- [Mailing list](#mailing-list)
 - [Issue Reporting](#issue-reporting)
-- [Additional Information](#additional-information)
-- [Demo Client](#demo-client)
 - [Appendices](#appendices)
-- [HTTP Status Codes](#http-status-codes)
+  - [HTTP Status Codes](#http-status-codes)
 
 <!-- /MarkdownTOC -->
 
 <a id="introduction"></a>
 ## Introduction
 
-This document describes and specifies the implementation offered by DK Hostmaster A/S for interaction with the central registry for the ccTLD dk using the Domain Availability Service (DAS). It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of HTTP and possibly DNS registration.
+This document describes and specifies the implementation offered by Punktum dk A/S for interaction with the central registry for the ccTLD dk using the Domain Availability Service (DAS). It is primarily aimed at a technical audience, and the reader is required to have prior knowledge of HTTP and possibly DNS registration.
 
 <a id="about-this-document"></a>
 ## About this Document
 
-This specification describes version 1 (1.X.X) and 2 (2.X.X) of the DK Hostmaster DAS Implementation. Future releases will be reflected in updates to this specification, please see the document history section below.
-The document describes the current DK Hostmaster DAS implementation, for more general documentation on the used protocols and additional information please refer to the RFCs and additional resources in the References and Resources chapters below.
+This specification describes the Punktum dk Domain Availability Service (DAS). Future releases will be reflected in updates to this document; please refer to the Document History below for changes.
+
+The document describes the current Punktum dk DAS implementation. The document describes the current Punktum dk DAS implementation. For additional information, please refer to the [References](#references) chapter below.
+
 Any future extensions and possible additions and changes to the implementation are not within the scope of this document and will not be discussed or mentioned throughout this document.
 
-A printable version can be obtained via [this link](https://gitprint.com/DK-Hostmaster/das-service-specification/blob/master/README.md), using the gitprint service.
+This document is owned and maintained by Punktum dk A/S and must not be distributed without this information.
 
-Do note that all the examples are constructed and the access credentials are examples and are non-functional.
+All examples provided in the document are fabricated/modified from real data to demonstrate commands etc. any resemblance to actual data are coincidental.
 
 <a id="license"></a>
 ### License
 
-This document is copyright by DK Hostmaster A/S and is licensed under the MIT License, please see the separate LICENSE file for details.
+This document is copyright by Punktum dk A/S and is licensed under the MIT License, please see the separate [LICENSE][MITLICENSE] file for details.
 
 <a id="document-history"></a>
 ### Document History
+
+- 2.1.1 2026-07-21
+  - Verified and corrected request/response examples against the production service
+  - General review and rewrite for clarity and consistency
 
 - 2.1 2021-09-02
   - Updated support information
@@ -136,31 +133,30 @@ This document is copyright by DK Hostmaster A/S and is licensed under the MIT Li
 <a id="the-dk-registry-in-brief"></a>
 ## The .dk Registry in Brief
 
-DK Hostmaster is the registry for the ccTLD for Denmark (dk). The current model used in Denmark is based on a sole registry, with DK Hostmaster maintaining the central DNS registry.
-The service is not subject to any sorts of standards but adheres to best practices in the implementation of REST and use of HTTP in context of REST.
+Punktum dk is the registry for the Danish country-code top-level domain (.dk) and maintains the central DNS registry.
 
 <a id="domain-availability-service"></a>
 ## Domain Availability Service
 
-The DK Hostmaster’s DAS is based on a SOA architecture. The implementation is regarded as a service offered to external parties requiring inquiry actions towards the DK Hostmaster registry.
+Punktum dk's DAS is regarded as a service offered to external parties requiring inquiry actions towards the Punktum dk registry.
 
-DAS is an HTTP-based protocol aimed at providing a speedy interface for requesting information from the DK Hostmaster registry. The service is intended for machine-to-machine communication in a client-server setup. Please see the References chapter for more information on specifications and references for HTTP and related.
+DAS is an HTTP-based protocol aimed at providing a speedy interface for requesting information from the Punktum dk registry. The service is intended for machine-to-machine communication in a client-server setup. The service is not subject to any sorts of standards but adheres to best practices in the implementation of REST and use of HTTP in context of REST.
 
 The service requires the use and possible development of client software. This is beyond the scope of this specification as the API and other assets for assisting in this are the primary object of this document.
 
-In addition to the assets, DK Hostmaster aims to assist users and developers of possible client software with integration towards DK Hostmaster and therefore provide facilities to ease this integration. This is primarily centered around a sandbox environment and related documentation.
+In addition to the assets, Punktum dk aims to assist users and developers of possible client software with integration towards Punktum dk and therefore provide facilities to ease this integration. This is primarily centered around a sandbox environment and related documentation.
 
 <a id="available-environments"></a>
 ## Available Environments
 
-DK Hostmaster offers the following environments:
+Punktum dk offers the following two environments:
 
-| Environment | Role | Policies |
-| ----------- | ---- | ----------- |
-| production  | production | This environment will be the production environment for the DK Hostmaster Domain Availability Service |
-| sandbox     | development | This environment is intended for client development towards the DK Hostmaster Domain Availability Service. |
+| Environment | Endpoint | Purpose |
+|-------------|----------|---------|
+| Production | `https://das.dk-hostmaster.dk/` | Live production data |
+| Sandbox | `https://das-sandbox.dk-hostmaster.dk/` | Client development against isolated sandbox data |
 
-Do note that accessing the service does not require IP address whitelisting with DK Hostmaster prior to use.
+👉 Do note that accessing the service does not require IP address whitelisting with Punktum dk prior to use.
 
 <a id="production-environment"></a>
 ### Production Environment
@@ -173,7 +169,7 @@ Production is available at: `https://das.dk-hostmaster.dk/`
 <a id="sandbox-environment"></a>
 ### Sandbox Environment
 
-- is_available requests made to this environment will reflect data only available in the isolated [sandbox environment], please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
+- is_available requests made to this environment will reflect data only available in the isolated sandbox environment, please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details.
 - Please see the section on [Test Data](#test-data).
 
 Sandbox is available at: `https://das-sandbox.dk-hostmaster.dk/`
@@ -183,79 +179,51 @@ Sandbox is available at: `https://das-sandbox.dk-hostmaster.dk/`
 
 In general the service is not localized and all DAS related errors and messages are provided in English.
 
-The only localization support provided by the service is the support for IDN domains. Please note the service require requests in UTF-8, meaning punycode encoded domain names will be interpreted as-is, meaning in ASCII context.
+The only localization support provided by the service is the support for IDN (Internationalized Domain Name) domains. Domain names must be submitted in UTF-8 using their native characters, for example sikkerpånettet.dk. The service evaluates and returns the domain name in this form.
 
-The punycode encoded example of: `xn--kdplg-orai3l.dk` will be evaluated as `xn--kdplg-orai3l.dk` and not decoded to kødpålæg.dk prior to evaluation.
+Please note that punycode-encoded domain names (for example xn--sikkerpnettet-vfb.dk) are not accepted by the service and will be rejected with an HTTP 400 response. Submit the UTF-8 representation instead.
 
-<a id="aaa"></a>
-### AAA
+<a id="authentication"></a>
+### Authentication
 
-This service is called using Basic HTTP Authentication supporting current authentication credentials, consisting of:
+The service is called using Basic HTTP Authentication with a dedicated DAS service user, consisting of:
 
-- user-id / handle
+- user-id (DAS user)
 - password
 
-Too many failed login attempts will block the account. The block for a user-id lasts for 24 hours and it automatically lifted.
+Too many failed login attempts will block the account. The block for a user-id lasts for 24 hours and is automatically lifted.
 
-If failing login attempts continue or is spread across user-ids originating from the same IP-address the IP-address will be blocked. The block for an IP-address lasts for 24 hours and it automatically lifted.
+If failed login attempts continue, or are spread across user-ids originating from the same IP address, the IP address will be blocked. The block for an IP address lasts for 24 hours and is automatically lifted.
 
 <a id="supported-media-types"></a>
-### Supported Media-types
+### Supported Media Types
 
-The service supports JSON, XML and plain text format, using the UTF-8 character set. In order to specify what format you want to retrieve the format should be specified in the HTTP header: Accept-header.
-Control the content type by setting header info, using the below examples:
+The service supports JSON, XML and plain text, using the UTF-8 character set. Specify the desired response format in the HTTP `Accept` header, using one of the following:
 
 - `Accept: application/json; charset=utf-8`
 - `Accept: application/xml; charset=utf-8`
 - `Accept: text/plain; charset=utf-8`
 
-If the content type is not specified, the response will reflect this with an HTTP status code: 415 (see: HTTP status code listing in appendices).
+If a supported format is not specified in the `Accept` header, the service responds with HTTP status code 415 (see the [HTTP Status Codes][http-status-codes] section in the appendices).
 
 <a id="rate-limiting"></a>
 ### Rate Limiting
 
-We only allow a certain number of requests per minute. We reserve the right to adjust the rate limit in order to provide a high quality of service.
-If rate limit is exceeded the HTTP status code 429 “Too many requests” is returned. Further, the response will have a `Retry-After` header that tells you for how many seconds to wait before retrying.
+The service does not enforce a rate limit. You can query the service as often as your integration requires, in both the production and the sandbox environment.
 
-Current limit is set to 60 requests per minute.
-
-Please note the sandbox environment does not enforce rate limiting at this time, due to a wish for unlimited use for developers.
-
-<a id="session-handling"></a>
-### Session Handling
-
-The service uses a basic session handling based on cookies.
-
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| cookie name | dkhm-das-session | This is the name of the cookie |
-| cookie domain | .dk-hostmaster.dk |
-| expiration | 3600 seconds | The expiration date provided in the cookie is in the GMT timezone |
+👉 Query volumes are expected to be proportional to actual business use. Punktum dk reserves the right to introduce a rate limit, or to suspend a DAS service user, if use of the service affects the overall quality of the service.
 
 <a id="domain-status"></a>
 ## Domain Status
 
-The service returns a queried domain name and it's status if possible. The different domain status has the following meanings:
+The service returns a queried domain name and its status where possible. The status values have the following meanings:
 
-<a id="available-available"></a>
-### Available: `available`
-
-A given domain name is available for application.
-
-<a id="unavailable-unavailable"></a>
-### Unavailable: `unavailable`
-
-A given domain name is in use and is not available for application.
-
-<a id="available-for-designated-user-from-waiting-list-available-on-waiting-list"></a>
-### Available for designated user from waiting list: `available-on-waiting-list`
-
-A given domain name has been offered to the first entry on a waiting list and is awaiting the specific user's approval or decline to this offer.
-
-<a id="enqueued-enqueued"></a>
-### Enqueued: `enqueued`
-
-If an application has been enqueued with DK Hostmaster, but not processed. This can last a few seconds to a few days if the application require accept of agreement from the designated registrant
+| Status | Meaning |
+|--------|---------|
+| `available` | The domain name is available for application. |
+| `unavailable` | The domain name is in use and is not available for application. |
+| `available-on-waiting-list` | The domain name has been offered to the applicant at the top of the waiting list and is awaiting that applicant's acceptance or decline of the offer to register the domain name. |
+| `enqueued` | An application has been enqueued with Punktum dk but not yet processed. This can last from a few seconds to a few days, for example while the application awaits completion of a required approval before registration is finalised. |
 
 <a id="service-domainis_available"></a>
 ## Service `/domain/is_available`
@@ -263,19 +231,27 @@ If an application has been enqueued with DK Hostmaster, but not processed. This 
 <a id="request"></a>
 ### Request
 
-Method:
-    `GET`
+Method: `GET`
 
-URL path:
-    `/domain/is_available/<domain>`
+URL path: `/domain/is_available/<domain>`
 
 | Parameter | Type | Description | Mandatory | Example |
 |-----------|------|-------------|-----------|---------|
-| domain    | string | The domain name to evaluate, it has to adhere to the domain name format expected by DK Hostmaster, see References. | yes | abc.dk, jordbærgrød.dk |
-| status | enumerated string | string indicating the status of the request, either one of: `available`, `unavailable`, `enqueued` or `available-on-waiting-list` | yes | |
-| message | enumerated string | string providing a human-readable message, “OK” on success | optional |
+| domain | string | The domain name to evaluate. It must adhere to the domain name format expected by Punktum dk, see [References][references]. | yes | `sikkerpånettet.dk`, `eksempel.dk` |
 
-Default HTTP header observed: 200 OK. Additional status data in Status and Message. For additional HTTP status codes, which can be exhibited by the service, please refer to the addendum.
+<a id="response"></a>
+### Response
+
+The service returns the following fields:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| domain | string | The queried domain name. |
+| domain_status | enumerated string | The status of the domain, one of: `available`, `unavailable`, `enqueued` or `available-on-waiting-list`. |
+| status | integer | The HTTP status code of the response. |
+| message | string | A human-readable message, "OK" on success. |
+
+On success the service responds with HTTP status code 200. For other HTTP status codes that the service can return, see the [HTTP Status Codes][http-status-codes] section in the appendices.
 
 <a id="examples-for-unavailable-domain"></a>
 ### Examples for unavailable domain
@@ -284,24 +260,23 @@ JSON:
 
 ```Shell
 % curl --header Accept:application/json \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/eksempel.dk
 ```
 
 ```JSON
-{"domain":"dk-hostmaster.dk","domain_status":"unavailable","message":"OK","status":200}
+{"domain":"eksempel.dk","domain_status":"unavailable","message":"OK","status":200}
 ```
 
 XML:
 
 ```Shell
 % curl --header Accept:application/xml \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/eksempel.dk
 ```
 
 ```XML
-<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<response>
-  <domain>dk-hostmaster.dk</domain>
+<response xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <domain>eksempel.dk</domain>
   <domain_status>unavailable</domain_status>
   <message>OK</message>
   <status>200</status>
@@ -312,14 +287,14 @@ Text:
 
 ```Shell
 % curl --header Accept:text/plain \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/dk-hostmaster.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/eksempel.dk
 ```
 
 ```Text
 domain_status:unavailable
 status:200
 message:OK
-domain:dk-hostmaster.dk
+domain:eksempel.dk
 ```
 
 <a id="examples-for-available-domain"></a>
@@ -327,26 +302,25 @@ domain:dk-hostmaster.dk
 
 JSON:
 
-```bash
+```Shell
 % curl --header Accept:application/json \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/asdfg.dk
 ```
 
 ```JSON
-{"domain":"asdf.dk","domain_status":"available","message":"OK","status":200}
+{"domain":"asdfg.dk","domain_status":"available","message":"OK","status":200}
 ```
 
 XML:
 
 ```Shell
 % curl --header Accept:application/xml \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/asdfg.dk
 ```
 
 ```XML
-<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
-<response>
-  <domain>asdf.dk</domain>
+<response xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <domain>asdfg.dk</domain>
   <domain_status>available</domain_status>
   <message>OK</message>
   <status>200</status>
@@ -357,26 +331,36 @@ Text:
 
 ```Shell
 % curl --header Accept:text/plain \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf.dk
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/asdfg.dk
 ```
 
 ```Text
-domain:asdf.dk
+domain:asdfg.dk
 message:OK
 status:200
 domain_status:available
 ```
-
 <a id="example-with-bad-domain-parameter"></a>
 ### Example with bad domain parameter
 
 Please note the `-v` flag to `curl` and that the response has been stripped down.
 
+JSON:
+
+```Shell
+% curl -v --header Accept:application/json \
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/asdf
+```
+
+```JSON
+{"domain":"asdf","domain_status":null,"status":"400","message":"Invalid domain syntax"}
+```
+
 Text:
 
 ```Shell
 % curl -v --header Accept:text/plain \
-https://REG-999999:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
+https://DAS-999:secret@das.dk-hostmaster.dk/domain/is_available/asdf
 ```
 
 ```Text
@@ -385,43 +369,30 @@ status:400
 message:Invalid domain syntax
 ```
 
-<a id="example-with-bad-credentials"></a>
-### Example with bad credentials
-
-Please note the `-v` flag to `curl` and that the response has been stripped down.
-
-Text:
-
-```Shell
-% curl -v --header Accept:text/plain \
-https://REG-123456:secret@das-sandbox.dk-hostmaster.dk/domain/is_available/asdf
-```
-
-```Text
-message:Forbidden
-status:403
-```
+⚠️ Note: for error responses, the XML format returns an empty body; only the HTTP status code `400` is provided. Use JSON or plain text to receive a machine-readable error message.
 
 <a id="test-data"></a>
 ## Test Data
 
-The sandbox uses a predefined set of test data. All domains not listed in the below list will be reported as `available` in the sandbox environment.
+The sandbox uses a predefined set of test data. All domains not listed below will be reported as `available` in the sandbox environment.
 
 <a id="domains"></a>
 ### Domains
 
 | Domain name | Status | Notes |
 |-------------|--------|-------|
-| `dk-hostmaster.dk` | `unavailable` | The domain is active |
-| `waiting-list.dk` | `available-on-waiting-list` | The domain status is awaiting a specific registrant |
-| `enqueued.dk` | `enqueued` | The domain application status is enqueued |
-| `æøåöäüé.dk` | `unavailable` | This domain is active |
-| * | * | Depending on what domains has been registered with the sandbox environment (see states above), if not registered `available` will be returned. Please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details. |
+| `punktum.dk` | `unavailable` | The domain is active |
+| `waiting-list.dk` | `available-on-waiting-list` | The domain has been offered to the applicant at the top of the waiting list |
+| `æøåöäüé.dk` | `unavailable` | The domain is active |
+| * | * | Depending on which domains have been registered in the sandbox environment (see the statuses above); if not registered, `available` is returned. Please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details. |
+
 
 <a id="accounts--credentials"></a>
 ### Accounts / Credentials
 
-To use the DAS sandbox you have to use your own account, please see the [sandbox environment specification](https://github.com/DK-Hostmaster/sandbox-environment-specification) for details.
+To use the DAS sandbox you must use your own account, please see the [sandbox environment specification](https://github.com/Punktum-dk/sandbox-environment-specification) for details.
+
+The DAS Service API User is created within the RP (Registrar Portal).
 
 <a id="references"></a>
 ## References
@@ -429,44 +400,18 @@ To use the DAS sandbox you have to use your own account, please see the [sandbox
 Here is a list of documents and references used in this document
 
 - [General Terms and Conditions][general_terms_and_conditions]
-- [RFC: 2616 Hypertext Transfer Protocol -- HTTP/1.1][RFC:2616]
-- [RFC: 2617 HTTP Authentication: Basic and Digest Access Authentication][RFC:2617]
-- [Documentation on the format of a domain name with the DK Hostmaster A/S registry][DKHMNSDOM]
-
-<a id="resources"></a>
-## Resources
-
-Resources for DK Hostmaster DAS support are listed below.
-
-<a id="mailing-list"></a>
-## Mailing list
-
-DK Hostmaster operates a mailing list for discussion and inquiries about the DK Hostmaster DAS implementation. To subscribe to this list, write to the address below and follow the instructions. Please note that the list is for technical discussion only, any issues beyond the technical scope will not be responded to, please send these to the contact issue reporting address below and they will be passed on to the appropriate entities within DK Hostmaster A/S.
-
-- `tech-discuss+subscribe@liste.dk-hostmaster.dk`
+- [Documentation on the format of a domain name with the Punktum dk registry][DKHMNSDOM]
 
 <a id="issue-reporting"></a>
 ## Issue Reporting
 
-For issue reporting related to this specification, the DAS implementation or sandbox or production environments, please contact us. You are of course welcome to post these to the mailing list mentioned above, otherwise, use the regular support channels.
-
-<a id="additional-information"></a>
-## Additional Information
-
-The DK Hostmaster website:
-
-- `https://www.dk-hostmaster.dk/en/das`
-
-<a id="demo-client"></a>
-## Demo Client
-
-A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is available as open source under a MIT license.
+For issue reporting related to this specification, the DAS implementation, or the sandbox or production environments, please [contact us][contact] or write to registrar@punktum.dk.
 
 <a id="appendices"></a>
 ## Appendices
 
 <a id="http-status-codes"></a>
-## HTTP Status Codes
+### HTTP Status Codes
 
 | Status code | Message | Description |
 |-------------|---------|-------------|
@@ -476,18 +421,15 @@ A [demo client](https://github.com/DK-Hostmaster/das-demo-client-mojolicious) is
 | 403 | Forbidden | Not authorized |
 | 404 | Page not found | The request assumes a service (URL) not provided or unsupported at this time |
 | 415 | Unsupported Media Type | The requested media type is unsupported, see section on Media Types |
-| 429 | Too many attempts | Rate limiting triggered, please see section on Rate Limiting |
 | 500 | Server Error | Service malfunction |
 | 503 | Service Unavailable | Maintenance mode |
 
 Please see the [Wikipedia; List of HTTP status codes][WIKIPEDIA].
 
-[general_terms_and_conditions]: https://www.dk-hostmaster.dk/en/general-conditions
-
-[DKHMNSDOM]: https://github.com/DK-Hostmaster/dkhm-name-service-specification#domain-names
-
-[RFC:2617]: http://tools.ietf.org/html/rfc2617
-
-[RFC:2616]: https://tools.ietf.org/html/rfc2616
-
 [WIKIPEDIA]: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+[MITLICENSE]: https://github.com/Punktum-dk/das-service-specification/blob/master/LICENSE
+[general_terms_and_conditions]: https://punktum.dk/en/articles/terms-and-conditions-dk-domain-name
+[DKHMNSDOM]: https://github.com/Punktum-dk/dkhm-name-service-specification#domain-names
+[references]: #references
+[http-status-codes]: #http-status-codes
+[contact]: https://punktum.dk/en/contact-customer-service?lvl1=Registrars&lvl2=CSRegistrarOther
