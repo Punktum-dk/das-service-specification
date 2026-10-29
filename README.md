@@ -3,7 +3,6 @@
 # Punktum dk Domain Availability Service Specification
 
 ![Markdownlint Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Markdownlint%20Action/badge.svg)
-![Spellcheck Action](https://github.com/DK-Hostmaster/das-service-specification/workflows/Spellcheck%20Action/badge.svg)
 
 2026-07-21
 Revision: 2.2
